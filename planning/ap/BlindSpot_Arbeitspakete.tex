@@ -51,7 +51,8 @@ Das System ergänzt den Langstock bei Hindernissen auf Brust- und Kopfhöhe.
 Ein vortrainiertes Tiefenmodell dient als Basismodell. Darauf aufbauend verbessern wir
 die metrische Genauigkeit auf zwei Wegen parallel: durch Fine-Tuning auf passenden Daten
 und durch eine Skalierung über Bodenebene und bekannte Kamerahöhe (Bodenskalierung).
-Ein iPhone 12 Pro mit LiDAR liefert Referenztiefen.
+Ein iPhone 12 Pro mit LiDAR liefert Referenztiefen. Zum Schluss läuft die Pipeline
+als App direkt auf dem iPhone.
 
 \begin{center}
 \begin{tabularx}{\linewidth}{@{}llX@{}}
@@ -62,7 +63,7 @@ Ein iPhone 12 Pro mit LiDAR liefert Referenztiefen.
   M1 & 18.11.2026 & Testset, Auswertungsframework und Offline-Pipeline mit Basismodell \\
   M2 & 09.12.2026 & Echtzeitbetrieb mit Audio-Feedback, Bodenskalierung integriert \\
   M3 & 06.01.2027 & Fine-Tuning abgeschlossen und bewertet \\
-  M4 & 20.01.2027 & Prototyp fertig, alle Varianten ausgewertet \\
+  M4 & 20.01.2027 & Prototyp inkl. App fertig, alle Varianten ausgewertet \\
   Vorstellung & 03.02.--10.02.2027 & Vortrag und Demo \\
   \bottomrule
 \end{tabularx}
@@ -71,6 +72,10 @@ Ein iPhone 12 Pro mit LiDAR liefert Referenztiefen.
 Aufwand in Personentagen (PT), nicht in Vollzeittagen. Jedes Arbeitspaket hat eine
 verantwortliche Person (\mika{} oder \yannik). Die Ergebnissicherung bearbeiten
 beide gemeinsam (\beide).
+
+Ein Arbeitspaket beginnt erst, wenn alle seine Vorgänger abgeschlossen sind
+(Ende-Anfang-Beziehung, wie im Gantt-Diagramm üblich). Der Start liegt daher immer
+nach dem Ende des letzten Vorgängers.
 
 
 \clearpage
@@ -87,27 +92,28 @@ Die zeitliche Orientierung folgt im Gantt-Diagramm.
     root/.style={draw=mika, thick, fill=mika!12, rounded corners=2pt,
                  font=\normalsize\bfseries, minimum width=3cm, minimum height=0.8cm},
     comp/.style={draw=rahmen, rounded corners=2pt, fill=rahmen!10,
-                 font=\footnotesize\bfseries, text width=2.8cm, align=center,
+                 font=\footnotesize\bfseries, text width=2.3cm, align=center,
                  minimum height=0.95cm},
     pkg/.style={draw=rahmen, rounded corners=2pt, anchor=west,
-                text width=2.5cm, align=left, minimum height=1.2cm, inner sep=3pt},
+                font=\scriptsize, text width=2.2cm, align=left, minimum height=1.2cm, inner sep=3pt},
     line/.style={draw=rahmen, thick},
   ]
 
 
-  \def\colw{3.35}
-  \node[root] (root) at (2*\colw+1.5, 0) {Blind Spot};
+  \def\colw{2.75}
+  \node[root] (root) at (2.5*\colw+1.5, 0) {Blind Spot};
 
 
   \foreach \i/\name in {0/{1 Datengrundlage}, 1/{2 Gelernte\\Tiefenpipeline},
-                        2/{3 Warnsystem}, 3/{4 Evaluation}, 4/{5 Ergebnis-\\sicherung}} {
+                        2/{3 Warnsystem}, 3/{4 App}, 4/{5 Evaluation},
+                        5/{6 Ergebnis-\\sicherung}} {
     \node[comp] (c\i) at (\i*\colw+1.5, -1.6) {\name};
   }
 
 
   \draw[line] (root.south) -- ++(0,-0.4) coordinate (fork);
-  \draw[line] (0*\colw+1.5, -0.8) -- (4*\colw+1.5, -0.8);
-  \foreach \i in {0,...,4} \draw[line] (\i*\colw+1.5, -0.8) -- (c\i.north);
+  \draw[line] (0*\colw+1.5, -0.8) -- (5*\colw+1.5, -0.8);
+  \foreach \i in {0,...,5} \draw[line] (\i*\colw+1.5, -0.8) -- (c\i.north);
 
   \newcommand{\pkgs}[2]{%
     \foreach \t [count=\k] in {#2} {
@@ -127,15 +133,19 @@ Die zeitliche Orientierung folgt im Gantt-Diagramm.
            {3.3 Echtzeit-\\Integration\\\mika},{3.4 Fehlalarm-\\filter\\\yannik}}
   \draw[line] (2*\colw+0.2, -2.075) -- (2*\colw+0.2, -1.6-1.45*4);
 
-  \pkgs{3}{{4.1 Auswertungs-\\framework\\\yannik},{4.2 Gesamt-\\auswertung\\\yannik},
-           {4.3 Live-Test,\\Fehleranalyse\\\mika}}
+  \pkgs{3}{{4.1 Oberfläche\\und Kamera\\\mika},{4.2 Stereo-Audio\\in der App\\\mika},
+           {4.3 Pipeline auf\\dem iPhone\\\yannik}}
   \draw[line] (3*\colw+0.2, -2.075) -- (3*\colw+0.2, -1.6-1.45*3);
 
-  \pkgs{4}{{5.1 Doku-\\mentation\\\beide},{5.2 Abschluss-\\bericht\\\beide},
-           {5.3 Vortrag\\und Demo\\\beide}}
+  \pkgs{4}{{5.1 Auswertungs-\\framework\\\yannik},{5.2 Gesamt-\\auswertung\\\yannik},
+           {5.3 Live-Test,\\Fehleranalyse\\\mika}}
   \draw[line] (4*\colw+0.2, -2.075) -- (4*\colw+0.2, -1.6-1.45*3);
+
+  \pkgs{5}{{6.1 Doku-\\mentation\\\beide},{6.2 Abschluss-\\bericht\\\beide},
+           {6.3 Vortrag\\und Demo\\\beide}}
+  \draw[line] (5*\colw+0.2, -2.075) -- (5*\colw+0.2, -1.6-1.45*3);
 \end{tikzpicture}
-\caption{Work Breakdown Structure: 5 Komponenten, 18 Arbeitspakete}
+\caption{Work Breakdown Structure: 6 Komponenten, 21 Arbeitspakete}
 \end{figure}
 
 \clearpage
@@ -145,23 +155,23 @@ Die zeitliche Orientierung folgt im Gantt-Diagramm.
 
 \subsection*{1 Datengrundlage}
 \begin{description}[leftmargin=2.2em, labelwidth=2em, itemsep=0.4em]
-  \ap{1.1}{Kamerakalibrierung}{\yannik}{1}{02.11.--06.11.2026}{--}
+  \ap{1.1}{Kamerakalibrierung}{\yannik}{1}{02.11.--04.11.2026}{--}
      {Für das iPhone sind die Kameraparameter (Brennweite und Bildmittelpunkt)
       sowie die Höhe der Kamera am Körper bestimmt und im Repo abgelegt.}
-  \ap{1.2}{SANPO aufbereiten}{\yannik}{2}{02.11.--13.11.2026}{--}
+  \ap{1.2}{SANPO aufbereiten}{\yannik}{2}{02.11.--10.11.2026}{--}
      {Eine Teilmenge von SANPO (Brustkamera, Synthetic und ausgewählte Real-Sessions)
       ist geladen und über einen Loader mit Tiefe in Metern lesbar.}
   \ap{1.3}{Eigene Aufnahmen}{\mika}{2}{05.11.--15.11.2026}{1.1}
      {Etwa 10 Testwege innen und außen mit definierten Hindernistypen sind mit
       iPhone-LiDAR aufgenommen, dazu getrennte Trainingsaufnahmen.}
-  \ap{1.4}{Annotation und Splits}{\yannik}{2}{12.11.--18.11.2026}{1.2, 1.3}
+  \ap{1.4}{Annotation und Splits}{\yannik}{2}{16.11.--18.11.2026}{1.2, 1.3}
      {Hindernisse im Testset sind markiert und feste Train-, Val- und Test-Splits
       liegen versioniert im Repo.}
 \end{description}
 
 \subsection*{2 Gelernte Tiefenpipeline}
 \begin{description}[leftmargin=2.2em, labelwidth=2em, itemsep=0.4em]
-  \ap{2.1}{Auswahl des Basismodells}{\mika}{2}{09.11.--18.11.2026}{1.2, 4.1}
+  \ap{2.1}{Auswahl des Basismodells}{\mika}{2}{11.11.--18.11.2026}{1.2, 5.1}
      {Zwei bis drei metrische Tiefenmodelle sind auf den Testdaten verglichen und das
       Basismodell ist festgelegt.}
       \newpage
@@ -178,10 +188,10 @@ Die zeitliche Orientierung folgt im Gantt-Diagramm.
 
 \subsection*{3 Warnsystem}
 \begin{description}[leftmargin=2.2em, labelwidth=2em, itemsep=0.4em]
-  \ap{3.1}{Gehkorridor und Warnlogik}{\mika}{2}{09.11.--18.11.2026}{1.2}
+  \ap{3.1}{Gehkorridor und Warnlogik}{\mika}{2}{11.11.--18.11.2026}{1.2}
      {Hindernisse im Gehkorridor lösen offline eine Warnung aus, die naive Baseline
       ohne Korridor ist umgesetzt.}
-  \ap{3.2}{Stereo-Audio}{\mika}{2}{23.11.--02.12.2026}{3.1}
+  \ap{3.2}{Stereo-Audio}{\mika}{2}{19.11.--29.11.2026}{3.1}
      {Richtung wird über links und rechts, Nähe über die Piepfrequenz hörbar
       ausgegeben.}
   \ap{3.3}{Echtzeit-Integration}{\mika}{3}{30.11.--09.12.2026}{2.1, 3.1, 3.2}
@@ -192,33 +202,45 @@ Die zeitliche Orientierung folgt im Gantt-Diagramm.
       reduzieren Fehlalarme.}
 \end{description}
 
-\subsection*{4 Evaluation}
+\subsection*{4 App}
 \begin{description}[leftmargin=2.2em, labelwidth=2em, itemsep=0.4em]
-  \ap{4.1}{Auswertungsframework}{\yannik}{2}{02.11.--13.11.2026}{--}
+  \ap{4.1}{App-Oberfläche und Kamera}{\mika}{2}{10.12.--17.12.2026}{3.3}
+     {Eine iPhone-App zeigt den Kamerastream, hat Start und Stopp und stellt eine
+      Warnanzeige bereit.}
+  \ap{4.2}{Stereo-Audio in der App}{\mika}{1}{18.12.--23.12.2026}{3.2, 4.1}
+     {Die Stereo-Warntöne (Richtung über links und rechts, Nähe über die Piepfrequenz)
+      werden direkt in der App ausgegeben.}
+  \ap{4.3}{Pipeline auf dem iPhone}{\yannik}{3}{07.01.--20.01.2027}{2.4, 3.4, 4.2}
+     {Tiefenmodell, Bodenskalierung, Warnlogik und Fehlalarmfilter laufen live auf dem
+      iPhone, die Latenz ist auf dem Gerät gemessen.}
+\end{description}
+
+\subsection*{5 Evaluation}
+\begin{description}[leftmargin=2.2em, labelwidth=2em, itemsep=0.4em]
+  \ap{5.1}{Auswertungsframework}{\yannik}{2}{02.11.--10.11.2026}{--}
      {Ein Skript bewertet jede Variante gleich: Tiefenfehler, Recall, Fehlalarme,
       Richtung und Latenz.}
-  \ap{4.2}{Gesamtauswertung}{\yannik}{3}{11.01.--20.01.2027}{2.4, 3.4}
+      \newpage
+  \ap{5.2}{Gesamtauswertung}{\yannik}{3}{11.01.--20.01.2027}{2.4, 3.4}
      {Alle Varianten sind auf dem Testset verglichen: naive Baseline, Basismodell,
       Basismodell mit Bodenskalierung, nachtrainiertes Modell und nachtrainiertes
       Modell mit Bodenskalierung.}
-  \ap{4.3}{Live-Test und Fehleranalyse}{\mika}{2}{14.01.--20.01.2027}{3.3, 3.4}
+  \ap{5.3}{Live-Test und Fehleranalyse}{\mika}{2}{14.01.--20.01.2027}{3.3, 3.4}
      {Ein Live-Test mit Augenbinde ist durchgeführt und Fehlerfälle (Kopfhöhe,
       Treppe, Glas, Personen) sind analysiert.}
 \end{description}
 
-\subsection*{5 Ergebnissicherung}
+\subsection*{6 Ergebnissicherung}
 \begin{description}[leftmargin=2.2em, labelwidth=2em, itemsep=0.4em]
-  \ap{5.1}{Dokumentation}{\beide}{2}{02.11.2026--27.01.2027}{--}
+  \ap{6.1}{Dokumentation}{\beide}{2}{02.11.2026--27.01.2027}{--}
      {Repo, README und Code-Dokumentation sind laufend gepflegt und zum Projektende
       vollständig.}
-      \newpage
-  \ap{5.2}{Abschlussbericht}{\beide}{4}{18.01.--02.02.2027}{4.2, 4.3}
+  \ap{6.2}{Abschlussbericht}{\beide}{4}{21.01.--02.02.2027}{5.2, 5.3}
      {Der Abschlussbericht mit Methoden, Ergebnissen und Fehleranalyse ist fertig.}
-  \ap{5.3}{Vortrag und Demo}{\beide}{3}{21.01.--02.02.2027}{4.2}
+  \ap{6.3}{Vortrag und Demo}{\beide}{3}{21.01.--02.02.2027}{4.3, 5.2}
      {Vortragsfolien und ein Demo-Video als Absicherung für die Live-Vorführung sind
       fertig.}
 \end{description}
-
 
 \section{Arbeitsverteilung}
 
@@ -227,13 +249,13 @@ Die zeitliche Orientierung folgt im Gantt-Diagramm.
   \toprule
   Person & Arbeitspakete & Aufwand (PT) \\
   \midrule
-  \mika{} Brückner & 1.3, 2.1, 2.2, 2.4, 3.1, 3.2, 3.3, 4.3 & 18 \\
-  \yannik{} Köllmann & 1.1, 1.2, 1.4, 2.3, 3.4, 4.1, 4.2 & 17 \\
-  \beide{} gemeinsam & 5.1, 5.2, 5.3 & 9 \\
+  \mika{} Brückner & 1.3, 2.1, 2.2, 2.4, 3.1, 3.2, 3.3, 4.1, 4.2, 5.3 & 21 \\
+  \yannik{} Köllmann & 1.1, 1.2, 1.4, 2.3, 3.4, 4.3, 5.1, 5.2 & 20 \\
+  \beide{} gemeinsam & 6.1, 6.2, 6.3 & 9 \\
   \midrule
-  Anteil pro Person & & Mika 22,5 / Yannik 21,5 \\
+  Anteil pro Person & & Mika 25,5 / Yannik 24,5 \\
   \midrule
-  Gesamt & & 44 \\
+  Gesamt & & 50 \\
   \bottomrule
 \end{tabular}
 \end{center}
