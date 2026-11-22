@@ -357,3 +357,16 @@ def test_plan_session_with_masks_keeps_only_human_frames(monkeypatch):
 
     monkeypatch.setattr(mod, "_get", not_found)
     assert mod.plan_session("real", "s1", 1, 10, masks=True) == []  # session without masks
+
+
+def test_obstacles_from_mask_semantic_regions_need_larger_area():
+    m = np.zeros((40, 60, 3), np.uint8)
+    m[0:20, 0:30] = (7, 0, 0)  # building, 600 px
+    m[30:34, 40:44] = (8, 0, 0)  # wall patch, 16 px
+    m[0:3, 50:55] = (23, 0, 1)  # traffic light, 15 px, an instance class
+    got = sorted((o.label, o.box, o.in_path) for o in masks.obstacles_from_mask(m, (40, 60), min_area_px=10))
+    assert got == [("building", (0, 0, 30, 20), True), ("traffic light", (50, 0, 55, 3), False)]
+    # two separate building regions become two obstacles
+    m[0:20, 30:60] = 0
+    m[0:20, 40:60] = (7, 0, 0)
+    assert [o.box for o in masks.obstacles_from_mask(m, (40, 60), min_area_px=10)].count((40, 0, 60, 20)) == 1
