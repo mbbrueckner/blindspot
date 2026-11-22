@@ -15,8 +15,8 @@ import numpy as np
 from blindspot.core import Obstacle
 from blindspot.sanpo import CHEST
 
-# SANPO class ID -> label. Ground, buildings, walls, sky and vegetation are not boxed obstacles;
-# traffic lights hang above head height. Revisit with the group if the definition should change.
+# SANPO class ID -> label for classes with instance IDs (one rectangle per instance). Ground, sky and
+# vegetation are not boxed obstacles. Revisit with the group if the definition should change.
 OBSTACLE_LABELS = {
     12: "pedestrian",
     13: "rider",
@@ -24,11 +24,18 @@ OBSTACLE_LABELS = {
     20: "obstacle",
     21: "vehicle",
     22: "traffic sign",
+    23: "traffic light",
     24: "pole",
     25: "bus stop",
     26: "bike rack",
     28: "tree",
 }
+
+# Classes without instance IDs: every connected region becomes one rectangle.
+SEMANTIC_OBSTACLE_LABELS = {4: "barrier", 7: "building", 8: "wall/fence", 9: "hand rail"}
+
+# Connected regions need this many times ``min_area_px``, smaller patches are mask noise.
+SEMANTIC_AREA_FACTOR = 10
 
 
 def in_path(box: tuple[int, int, int, int], width: int) -> bool:
@@ -55,7 +62,8 @@ def obstacles_from_mask(mask: np.ndarray, size: tuple[int, int], min_area_px: in
         min_area_px: Instances with fewer mask pixels (at the target size) are dropped as too small.
 
     Returns:
-        One obstacle per instance of an obstacle class, with ``in_path`` from :func:`in_path`.
+        One obstacle per instance of an obstacle class and per large connected region of a semantic
+        class (building, wall), with ``in_path`` from :func:`in_path`.
     """
     h, w = size
     if mask.shape[:2] != (h, w):
@@ -71,6 +79,14 @@ def obstacles_from_mask(mask: np.ndarray, size: tuple[int, int], min_area_px: in
                 continue
             box = (int(xs.min()), int(ys.min()), int(xs.max()) + 1, int(ys.max()) + 1)
             obstacles.append(Obstacle(box, label, in_path(box, w)))
+    for class_id, label in SEMANTIC_OBSTACLE_LABELS.items():
+        n, _, stats, _ = cv2.connectedComponentsWithStats(
+            (semantic == class_id).astype(np.uint8), connectivity=8
+        )
+        for x, y, bw, bh, area in stats[1:n]:  # label 0 is the background
+            if area >= SEMANTIC_AREA_FACTOR * min_area_px:
+                box = (int(x), int(y), int(x + bw), int(y + bh))
+                obstacles.append(Obstacle(box, label, in_path(box, w)))
     return obstacles
 
 
