@@ -16,6 +16,7 @@ depth resolution and scales the intrinsics, so image, depth and camera parameter
 import gzip
 import json
 from pathlib import Path
+from typing import Iterable
 
 import cv2
 import numpy as np
@@ -118,6 +119,29 @@ def load_sample(session_dir: Path, index: int, camera: str = CHEST) -> Sample:
         depth=depth,
         intrinsics=scale_intrinsics(intrinsics, w / img_w, h / img_h),
     )
+
+
+def load_samples(root: Path, session_ids: Iterable[str], camera: str = CHEST) -> list[Sample]:
+    """Loads all downloaded frames of the given sessions.
+
+    Args:
+        root: Directory that contains the session directories.
+        session_ids: Session IDs, e.g. from a split file; each must exist below ``root``.
+        camera: Camera name, default is the chest camera.
+
+    Returns:
+        List of :class:`Sample` in session order, then frame order (without annotation).
+
+    Raises:
+        FileNotFoundError: If a session directory is missing.
+    """
+    samples = []
+    for sid in session_ids:
+        session_dir = Path(root) / sid
+        if not session_dir.is_dir():
+            raise FileNotFoundError(session_dir)
+        samples += [load_sample(session_dir, i, camera) for i in frame_indices(session_dir, camera)]
+    return samples
 
 
 def read_session_ids(path: Path) -> list[str]:
