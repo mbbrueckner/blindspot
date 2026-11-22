@@ -9,7 +9,7 @@ import cv2
 import numpy as np
 import pytest
 
-from blindspot import calibration, evaluation, sanpo, splits
+from blindspot import calibration, evaluation, masks, sanpo, splits
 from blindspot.core import Alert, Intrinsics, Obstacle, Sample
 
 K = Intrinsics(100.0, 100.0, 32.0, 24.0)
@@ -290,3 +290,98 @@ def test_evaluate_script_end_to_end(tmp_path):
     assert res["depth"]["abs_rel"] == pytest.approx((4.0 - 2.5) / 2.5)
     with pytest.raises(ValueError):
         run_script("evaluate", *args, "--variant", "no_colon")
+
+
+# ---- Masks, annotation script and mask-aware download plan (WP 1.4) ----
+
+
+def make_mask(h=40, w=60):
+    """Mask image (RGB) with one pole, two trees (second instance ID via the low channel), ground, speck."""
+    m = np.zeros((h, w, 3), np.uint8)
+    m[:, :, 0] = 3  # sidewalk everywhere, never an obstacle
+    m[0:30, 28:32] = (24, 0, 1)  # pole in the center
+    m[0:20, 2:10] = (28, 0, 1)  # tree on the left
+    m[0:20, 50:58] = (28, 0, 2)  # second tree instance on the right
+    m[35, 5] = (24, 0, 2)  # single pixel, too small
+    return m
+
+
+def test_obstacles_from_mask_instances_labels_and_in_path():
+    obs = masks.obstacles_from_mask(make_mask(), (40, 60), min_area_px=10)
+    got = sorted((o.label, o.box, o.in_path) for o in obs)
+    assert got == [
+        ("pole", (28, 0, 32, 30), True),
+        ("tree", (2, 0, 10, 20), False),  # left of the central third (20 to 40)
+        ("tree", (50, 0, 58, 20), False),
+    ]
+
+
+def test_obstacles_from_mask_resizes_to_target():
+    obs = masks.obstacles_from_mask(make_mask(), (20, 30), min_area_px=1)
+    assert any(o.label == "pole" and o.box == (14, 0, 16, 15) for o in obs)
+
+
+def test_in_path_overlaps_central_third():
+    assert masks.in_path((10, 0, 21, 5), 60) and masks.in_path((39, 0, 50, 5), 60)
+    assert not masks.in_path((0, 0, 20, 5), 60) and not masks.in_path((40, 0, 60, 5), 60)
+
+
+def test_load_obstacles_missing_mask_is_none(tmp_path):
+    sid = write_session(tmp_path)
+    assert masks.load_obstacles(sid, 3, (3, 4)) is None
+    d = sid / "camera_chest" / "left" / "segmentation_masks"
+    d.mkdir()
+    cv2.imwrite(str(d / "000003.png"), cv2.cvtColor(make_mask(), cv2.COLOR_RGB2BGR))
+    assert len(masks.load_obstacles(sid, 3, (40, 60), min_area_px=10)) == 3
+
+
+def test_make_annotations_script_roundtrip(tmp_path):
+    sid = write_session(tmp_path)
+    d = sid / "camera_chest" / "left" / "segmentation_masks"
+    d.mkdir()
+    pole = np.zeros((6, 8, 3), np.uint8)
+    pole[:, 3:5] = (24, 0, 1)  # full-height pole in the middle
+    cv2.imwrite(str(d / "000003.png"), cv2.cvtColor(pole, cv2.COLOR_RGB2BGR))
+    split = tmp_path / "s.txt"
+    split.write_text("sess\n")
+    out = tmp_path / "ann.json"
+    run_script("make_annotations", "--root", tmp_path, "--split", split, "--out", out, "--min-area", 1)
+    ann = evaluation.load_annotations(str(out))
+    assert ann == {
+        "sess/camera_chest/000003": [Obstacle((2, 0, 3, 3), "pole", True)]
+    }  # nearest neighbor keeps one of two columns
+
+
+def test_plan_session_with_masks_keeps_only_human_frames(monkeypatch):
+    mod = importlib.util.module_from_spec(
+        spec := importlib.util.spec_from_file_location("dl", SCRIPTS / "download_sanpo.py")
+    )
+    spec.loader.exec_module(mod)
+    left = "sanpo-real/s1/camera_chest/left"
+    monkeypatch.setattr(
+        mod,
+        "list_objects",
+        lambda prefix: (
+            [(f"{left}/video_frames/{i:06d}.png", 1) for i in range(0, 13, 6)]
+            + [(f"{left}/video_frames/000003.png", 1)]
+        ),
+    )
+    kinds = {
+        "0": "HUMAN_ANNOTATED",
+        "3": "MACHINE_ANNOTATED",
+        "6": "HUMAN_ANNOTATED",
+        "12": "MACHINE_ANNOTATED",
+    }
+    monkeypatch.setattr(mod, "_get", lambda url: json.dumps(kinds).encode())
+    names = [n for n, _ in mod.plan_session("real", "s1", 1, 10, masks=True)]
+    assert f"{left}/segmentation_masks/000006.png" in names and f"{left}/video_frames/000003.png" not in names
+    assert (
+        f"{left}/video_frames/000012.png" not in names
+        and f"{left}/frame_segmentation_annotation_type.json" in names
+    )
+
+    def not_found(url):
+        raise mod.urllib.error.HTTPError(url, 404, "nf", None, None)
+
+    monkeypatch.setattr(mod, "_get", not_found)
+    assert mod.plan_session("real", "s1", 1, 10, masks=True) == []  # session without masks
