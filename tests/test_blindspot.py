@@ -1,7 +1,9 @@
 """Tests for evaluation, SANPO loader, splits and calibration (WP 5.1, 1.2, 1.4, 1.1)."""
 
 import gzip
+import importlib.util
 import json
+import pathlib
 
 import cv2
 import numpy as np
@@ -220,3 +222,31 @@ def test_scale_and_roundtrip_calibration(tmp_path):
     path = tmp_path / "k.json"
     calibration.save_calibration(K, (64, 48), 1.35, "test", path)
     assert calibration.load_calibration(path) == (K, (64, 48), 1.35)
+
+
+# ---- Annotation, split script and evaluation runner (M1 glue) ----
+
+SCRIPTS = pathlib.Path(__file__).resolve().parent.parent / "scripts"
+
+
+def run_script(name, *args):
+    """Imports ``scripts/<name>.py`` and calls its ``main`` with the given arguments."""
+    spec = importlib.util.spec_from_file_location(name, SCRIPTS / f"{name}.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    module.main([str(a) for a in args])
+
+
+def test_make_splits_script(tmp_path):
+    folder = tmp_path / "data" / "real"
+    folder.mkdir(parents=True)
+    (folder / "train_sessions.txt").write_text("".join(f"s{i}\n" for i in range(10)))
+    (folder / "test_sessions.txt").write_text("t1\nt2\n")
+    out = tmp_path / "splits"
+    run_script("make_splits", "--kind", "real", "--data", tmp_path / "data", "--out", out)
+    assert (out / "sanpo_real_test.txt").read_text() == "t1\nt2\n"
+    train = (out / "sanpo_real_train.txt").read_text().split()
+    val = (out / "sanpo_real_val.txt").read_text().split()
+    assert len(train) + len(val) == 10 and not set(train) & set(val)
+    with pytest.raises(SystemExit):  # synthetic was never downloaded
+        run_script("make_splits", "--kind", "synthetic", "--data", tmp_path / "data", "--out", out)
