@@ -1,22 +1,1459 @@
 {
- "YnCjnEzv2rFXfyDKwJNehsHg9_l8cPDs/camera_chest/000000": [],
- "YnCjnEzv2rFXfyDKwJNehsHg9_l8cPDs/camera_chest/000030": [
+ "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl/camera_chest/000000": [
   {
    "box": [
-    810,
+    1122,
+    248,
+    1197,
+    425
+   ],
+   "label": "pedestrian",
+   "in_path": false
+  },
+  {
+   "box": [
+    929,
+    267,
+    978,
+    403
+   ],
+   "label": "pedestrian",
+   "in_path": false
+  },
+  {
+   "box": [
+    973,
+    275,
+    1003,
+    363
+   ],
+   "label": "pedestrian",
+   "in_path": false
+  },
+  {
+   "box": [
+    650,
     0,
-    860,
-    312
+    744,
+    342
    ],
    "label": "tree",
    "in_path": true
   },
   {
    "box": [
-    888,
-    160,
-    915,
+    1202,
+    0,
+    1280,
+    360
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl/camera_chest/000012": [
+  {
+   "box": [
+    854,
+    272,
+    927,
+    433
+   ],
+   "label": "pedestrian",
+   "in_path": false
+  },
+  {
+   "box": [
+    689,
+    284,
+    741,
+    418
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    732,
+    299,
+    759,
+    384
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    784,
+    290,
+    819,
+    383
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    1142,
+    259,
+    1179,
+    334
+   ],
+   "label": "rider",
+   "in_path": false
+  },
+  {
+   "box": [
+    778,
+    340,
+    823,
+    382
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    392,
+    0,
+    513,
+    360
+   ],
+   "label": "tree",
+   "in_path": true
+  },
+  {
+   "box": [
+    913,
+    0,
+    1033,
+    381
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    145,
+    391
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    80,
+    0,
+    274,
+    379
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    272,
+    137,
+    443,
+    360
+   ],
+   "label": "tree",
+   "in_path": true
+  }
+ ],
+ "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl/camera_chest/000024": [
+  {
+   "box": [
+    774,
+    224,
+    846,
+    377
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    623,
+    237,
+    675,
+    366
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    665,
+    244,
+    686,
+    334
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    705,
+    239,
+    741,
+    333
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    1124,
+    210,
+    1167,
+    290
+   ],
+   "label": "rider",
+   "in_path": false
+  },
+  {
+   "box": [
+    699,
+    298,
+    742,
+    330
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    183,
+    0,
+    416,
+    309
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    878,
+    0,
+    974,
+    343
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    57,
+    340
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    14,
+    0,
+    187,
+    329
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    218,
+    60,
+    366,
+    318
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl/camera_chest/000036": [
+  {
+   "box": [
+    607,
+    254,
+    671,
+    408
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    472,
+    268,
+    522,
+    394
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    509,
+    273,
+    533,
+    364
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    548,
+    267,
+    583,
+    360
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    1033,
+    223,
+    1075,
+    313
+   ],
+   "label": "rider",
+   "in_path": false
+  },
+  {
+   "box": [
+    539,
+    317,
+    563,
+    358
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    0,
+    0,
+    351,
+    347
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    739,
+    0,
+    848,
+    376
+   ],
+   "label": "tree",
+   "in_path": true
+  },
+  {
+   "box": [
+    0,
+    68,
+    56,
+    353
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    34,
+    78,
+    188,
+    342
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    1148,
+    0,
+    1280,
+    243
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl/camera_chest/000048": [
+  {
+   "box": [
+    610,
+    345,
+    682,
+    492
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    501,
+    349,
+    547,
+    473
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    538,
+    363,
+    561,
+    443
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    569,
+    358,
+    606,
+    442
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    1152,
+    342,
+    1206,
+    446
+   ],
+   "label": "rider",
+   "in_path": false
+  },
+  {
+   "box": [
+    547,
+    394,
+    583,
+    439
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    193,
+    0,
+    398,
+    403
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    762,
+    0,
+    879,
+    454
+   ],
+   "label": "tree",
+   "in_path": true
+  },
+  {
+   "box": [
+    0,
+    0,
+    84,
+    250
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    121,
+    136,
+    233,
+    399
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    1217,
+    7,
+    1280,
+    373
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl/camera_chest/000060": [
+  {
+   "box": [
+    663,
+    274,
+    728,
+    425
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    558,
+    279,
+    609,
+    397
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    617,
+    283,
+    661,
+    370
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    711,
+    343,
+    726,
+    400
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    543,
+    288,
+    561,
+    333
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    604,
+    323,
+    632,
+    367
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    142,
+    0,
+    459,
+    344
+   ],
+   "label": "tree",
+   "in_path": true
+  },
+  {
+   "box": [
+    858,
+    0,
+    966,
+    392
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    149,
+    262
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    188,
+    74,
+    284,
+    333
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl/camera_chest/000072": [
+  {
+   "box": [
+    696,
+    289,
+    762,
+    442
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    597,
+    299,
+    646,
+    413
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    649,
+    297,
+    688,
+    389
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    749,
+    294,
+    781,
+    421
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    638,
+    333,
+    663,
+    387
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    274,
+    0,
+    385,
     368
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    928,
+    0,
+    1063,
+    435
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    204,
+    367
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    243,
+    73,
+    323,
+    358
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl/camera_chest/000084": [
+  {
+   "box": [
+    711,
+    248,
+    770,
+    422
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    593,
+    257,
+    653,
+    392
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    648,
+    247,
+    699,
+    363
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    762,
+    244,
+    807,
+    402
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    633,
+    298,
+    662,
+    362
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    290,
+    0,
+    387,
+    328
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    970,
+    0,
+    1111,
+    512
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    178,
+    317
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    258,
+    23,
+    313,
+    308
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl/camera_chest/000096": [
+  {
+   "box": [
+    692,
+    237,
+    753,
+    389
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    578,
+    246,
+    624,
+    359
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    557,
+    247,
+    588,
+    339
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    617,
+    246,
+    653,
+    338
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    748,
+    241,
+    792,
+    370
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    652,
+    249,
+    680,
+    308
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    610,
+    304,
+    631,
+    343
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    250,
+    0,
+    362,
+    311
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    985,
+    0,
+    1139,
+    406
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    182,
+    315
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    219,
+    24,
+    284,
+    304
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl/camera_chest/000108": [
+  {
+   "box": [
+    673,
+    328,
+    741,
+    468
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    707,
+    313,
+    776,
+    447
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    198,
+    0,
+    319,
+    388
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    1027,
+    0,
+    1197,
+    478
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    82,
+    212
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    160,
+    136,
+    259,
+    373
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "YnCjnEzv2rFXfyDKwJNehsHg9_l8cPDs/camera_chest/000000": [
+  {
+   "box": [
+    282,
+    0,
+    334,
+    58
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    530,
+    0,
+    813,
+    105
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    1144,
+    18,
+    1280,
+    84
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    449,
+    31,
+    503,
+    64
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    787,
+    0,
+    853,
+    54
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    764,
+    0,
+    777,
+    224
+   ],
+   "label": "pole",
+   "in_path": true
+  },
+  {
+   "box": [
+    1102,
+    0,
+    1128,
+    157
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    867,
+    0,
+    886,
+    105
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    1067,
+    2,
+    1083,
+    69
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    502,
+    0,
+    534,
+    58
+   ],
+   "label": "tree",
+   "in_path": true
+  },
+  {
+   "box": [
+    474,
+    3,
+    484,
+    57
+   ],
+   "label": "tree",
+   "in_path": true
+  }
+ ],
+ "YnCjnEzv2rFXfyDKwJNehsHg9_l8cPDs/camera_chest/000012": [
+  {
+   "box": [
+    326,
+    75,
+    374,
+    137
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    497,
+    105,
+    526,
+    153
+   ],
+   "label": "obstacle",
+   "in_path": true
+  },
+  {
+   "box": [
+    1058,
+    0,
+    1279,
+    24
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    963,
+    0,
+    1115,
+    8
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    824,
+    0,
+    840,
+    155
+   ],
+   "label": "pole",
+   "in_path": true
+  },
+  {
+   "box": [
+    1199,
+    0,
+    1224,
+    84
+   ],
+   "label": "pole",
+   "in_path": false
+  }
+ ],
+ "YnCjnEzv2rFXfyDKwJNehsHg9_l8cPDs/camera_chest/000024": [
+  {
+   "box": [
+    1187,
+    63,
+    1212,
+    113
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    309,
+    0,
+    357,
+    23
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    434,
+    43,
+    498,
+    74
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    570,
+    44,
+    730,
+    117
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    782,
+    19,
+    859,
+    84
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    753,
+    35,
+    782,
+    73
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    785,
+    0,
+    814,
+    302
+   ],
+   "label": "pole",
+   "in_path": true
+  },
+  {
+   "box": [
+    1181,
+    0,
+    1218,
+    182
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    795,
+    2,
+    907,
+    145
+   ],
+   "label": "pole",
+   "in_path": true
+  },
+  {
+   "box": [
+    1083,
+    0,
+    1103,
+    103
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    484,
+    0,
+    579,
+    78
+   ],
+   "label": "tree",
+   "in_path": true
+  },
+  {
+   "box": [
+    439,
+    0,
+    488,
+    63
+   ],
+   "label": "tree",
+   "in_path": true
+  }
+ ],
+ "YnCjnEzv2rFXfyDKwJNehsHg9_l8cPDs/camera_chest/000036": [
+  {
+   "box": [
+    271,
+    28,
+    330,
+    97
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    458,
+    56,
+    486,
+    117
+   ],
+   "label": "obstacle",
+   "in_path": true
+  },
+  {
+   "box": [
+    469,
+    79,
+    674,
+    183
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    741,
+    99,
+    835,
+    138
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    915,
+    67,
+    983,
+    132
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    856,
+    82,
+    884,
+    122
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    742,
+    96,
+    834,
+    123
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    720,
+    97,
+    769,
+    132
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    976,
+    0,
+    1001,
+    419
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    988,
+    0,
+    1071,
+    207
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    1232,
+    0,
+    1279,
+    154
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    594,
+    0,
+    766,
+    121
+   ],
+   "label": "tree",
+   "in_path": true
+  },
+  {
+   "box": [
+    467,
+    0,
+    631,
+    96
+   ],
+   "label": "tree",
+   "in_path": true
+  },
+  {
+   "box": [
+    926,
+    0,
+    1023,
+    78
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    1009,
+    0,
+    1098,
+    124
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "YnCjnEzv2rFXfyDKwJNehsHg9_l8cPDs/camera_chest/000048": [
+  {
+   "box": [
+    108,
+    62,
+    173,
+    138
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    313,
+    83,
+    347,
+    157
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    769,
+    0,
+    1052,
+    63
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    619,
+    0,
+    718,
+    14
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    937,
+    0,
+    977,
+    367
    ],
    "label": "pole",
    "in_path": false
@@ -25,74 +1462,2491 @@
  "YnCjnEzv2rFXfyDKwJNehsHg9_l8cPDs/camera_chest/000060": [
   {
    "box": [
-    770,
+    354,
+    42,
+    374,
+    77
+   ],
+   "label": "pedestrian",
+   "in_path": false
+  },
+  {
+   "box": [
+    111,
+    8,
+    178,
+    79
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    320,
+    38,
+    355,
+    84
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    333,
+    13,
+    398,
+    46
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    1064,
     0,
-    820,
-    370
+    1279,
+    112
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    527,
+    14,
+    635,
+    57
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    699,
+    0,
+    782,
+    48
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    649,
+    0,
+    698,
+    42
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    527,
+    17,
+    635,
+    48
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    513,
+    16,
+    563,
+    46
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    893,
+    18,
+    1025,
+    521
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    892,
+    2,
+    912,
+    137
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    1041,
+    0,
+    1065,
+    69
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    421,
+    0,
+    489,
+    48
    ],
    "label": "tree",
    "in_path": true
   },
   {
    "box": [
-    965,
+    363,
     0,
-    1020,
-    520
+    376,
+    46
    ],
-   "label": "pole",
+   "label": "tree",
    "in_path": false
-  }
- ],
- "YnCjnEzv2rFXfyDKwJNehsHg9_l8cPDs/camera_chest/000090": [
+  },
   {
    "box": [
-    1150,
+    193,
     0,
-    1280,
-    720
+    257,
+    31
    ],
    "label": "tree",
    "in_path": false
   }
  ],
- "YnCjnEzv2rFXfyDKwJNehsHg9_l8cPDs/camera_chest/000120": [
+ "YnCjnEzv2rFXfyDKwJNehsHg9_l8cPDs/camera_chest/000072": [
   {
    "box": [
-    1045,
+    199,
+    145,
+    223,
+    225
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    206,
+    18,
+    265,
+    75
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    373,
+    93,
+    444,
+    127
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    759,
+    104,
+    918,
+    183
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    577,
+    100,
+    677,
+    142
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    745,
+    73,
+    824,
+    133
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    690,
+    80,
+    741,
+    128
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    581,
+    102,
+    677,
+    126
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    551,
+    100,
+    604,
+    132
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    917,
     0,
-    1090,
-    256
+    1004,
+    241
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    1102,
+    0,
+    1152,
+    172
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    427,
+    0,
+    608,
+    124
+   ],
+   "label": "tree",
+   "in_path": true
+  },
+  {
+   "box": [
+    286,
+    0,
+    465,
+    119
+   ],
+   "label": "tree",
+   "in_path": true
+  },
+  {
+   "box": [
+    745,
+    2,
+    869,
+    118
+   ],
+   "label": "tree",
+   "in_path": true
+  },
+  {
+   "box": [
+    859,
+    2,
+    919,
+    104
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    209,
+    0,
+    287,
+    104
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "YnCjnEzv2rFXfyDKwJNehsHg9_l8cPDs/camera_chest/000084": [
+  {
+   "box": [
+    118,
+    23,
+    164,
+    126
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    332,
+    0,
+    597,
+    62
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    595,
+    0,
+    679,
+    24
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    749,
+    0,
+    828,
+    16
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    1008,
+    0,
+    1052,
+    134
    ],
    "label": "pole",
    "in_path": false
   }
  ],
- "Mg1c9D4qOCWdYKaOTRlLFpLllUBP_kXh/camera_chest/000000": [
+ "YnCjnEzv2rFXfyDKwJNehsHg9_l8cPDs/camera_chest/000096": [
   {
    "box": [
-    610,
+    1237,
+    87,
+    1259,
+    139
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    20,
+    113,
+    82,
+    223
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    741,
     0,
-    655,
-    475
+    797,
+    18
+   ],
+   "label": "obstacle",
+   "in_path": true
+  },
+  {
+   "box": [
+    964,
+    0,
+    1008,
+    63
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    326,
+    52,
+    402,
+    84
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    35,
+    50,
+    133
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    547,
+    56,
+    653,
+    98
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    723,
+    24,
+    810,
+    92
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    669,
+    40,
+    715,
+    84
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    545,
+    53,
+    649,
+    83
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    528,
+    54,
+    574,
+    88
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    1035,
+    0,
+    1081,
+    229
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    1117,
+    0,
+    1163,
+    126
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    381,
+    0,
+    536,
+    89
+   ],
+   "label": "tree",
+   "in_path": true
+  },
+  {
+   "box": [
+    339,
+    0,
+    399,
+    86
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    794,
+    0,
+    850,
+    78
+   ],
+   "label": "tree",
+   "in_path": true
+  },
+  {
+   "box": [
+    848,
+    2,
+    896,
+    82
+   ],
+   "label": "tree",
+   "in_path": true
+  },
+  {
+   "box": [
+    184,
+    0,
+    212,
+    65
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "YnCjnEzv2rFXfyDKwJNehsHg9_l8cPDs/camera_chest/000108": [
+  {
+   "box": [
+    1096,
+    105,
+    1115,
+    151
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    1142,
+    111,
+    1154,
+    145
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    1181,
+    109,
+    1200,
+    149
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    168,
+    83,
+    259,
+    122
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    408,
+    84,
+    521,
+    130
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    585,
+    49,
+    674,
+    115
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    532,
+    65,
+    579,
+    107
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    1229,
+    113,
+    1280,
+    169
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    413,
+    84,
+    523,
+    114
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    384,
+    84,
+    444,
+    123
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    954,
+    0,
+    989,
+    264
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    981,
+    0,
+    1033,
+    147
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    229,
+    0,
+    421,
+    123
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    138,
+    0,
+    252,
+    122
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    648,
+    0,
+    747,
+    105
+   ],
+   "label": "tree",
+   "in_path": true
+  },
+  {
+   "box": [
+    719,
+    13,
+    763,
+    112
+   ],
+   "label": "tree",
+   "in_path": true
+  },
+  {
+   "box": [
+    0,
+    4,
+    59,
+    108
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    1213,
+    0,
+    1247,
+    43
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "ddEl0JtxAC3nnXI00uzGQH9cqwAK_uOu/camera_chest/000000": [
+  {
+   "box": [
+    570,
+    228,
+    616,
+    338
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    603,
+    241,
+    624,
+    296
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    424,
+    324,
+    444,
+    376
+   ],
+   "label": "obstacle",
+   "in_path": true
+  },
+  {
+   "box": [
+    439,
+    319,
+    461,
+    379
+   ],
+   "label": "obstacle",
+   "in_path": true
+  },
+  {
+   "box": [
+    452,
+    312,
+    482,
+    372
+   ],
+   "label": "obstacle",
+   "in_path": true
+  },
+  {
+   "box": [
+    488,
+    274,
+    519,
+    328
+   ],
+   "label": "obstacle",
+   "in_path": true
+  },
+  {
+   "box": [
+    0,
+    286,
+    265,
+    720
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    167,
+    274,
+    257,
+    327
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    218,
+    231,
+    373,
+    320
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    309,
+    249,
+    458,
+    355
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    435,
+    253,
+    481,
+    315
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    487,
+    253,
+    515,
+    278
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    450,
+    2,
+    498,
+    329
    ],
    "label": "pole",
    "in_path": true
-  }
- ],
- "Mg1c9D4qOCWdYKaOTRlLFpLllUBP_kXh/camera_chest/000030": [
+  },
   {
    "box": [
-    225,
+    338,
     0,
-    275,
-    560
+    407,
+    417
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    392,
+    0,
+    499,
+    334
+   ],
+   "label": "tree",
+   "in_path": true
+  },
+  {
+   "box": [
+    260,
+    32,
+    530,
+    323
+   ],
+   "label": "tree",
+   "in_path": true
+  }
+ ],
+ "ddEl0JtxAC3nnXI00uzGQH9cqwAK_uOu/camera_chest/000012": [
+  {
+   "box": [
+    437,
+    155,
+    481,
+    264
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    472,
+    168,
+    493,
+    222
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    268,
+    260,
+    292,
+    317
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    283,
+    254,
+    309,
+    317
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    300,
+    244,
+    332,
+    315
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    347,
+    203,
+    374,
+    260
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    362,
+    202,
+    381,
+    259
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    278,
+    50,
+    521
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    206,
+    77,
+    273
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    38,
+    166,
+    197,
+    262
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    143,
+    176,
+    311,
+    297
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    283,
+    179,
+    329,
+    247
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    342,
+    182,
+    370,
+    204
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    234,
+    23,
+    274
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    317,
+    14,
+    358,
+    265
    ],
    "label": "pole",
    "in_path": false
+  },
+  {
+   "box": [
+    176,
+    0,
+    235,
+    379
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    281,
+    0,
+    345,
+    275
+   ],
+   "label": "tree",
+   "in_path": false
   }
  ],
- "Mg1c9D4qOCWdYKaOTRlLFpLllUBP_kXh/camera_chest/000060": [],
- "Mg1c9D4qOCWdYKaOTRlLFpLllUBP_kXh/camera_chest/000090": [],
- "Mg1c9D4qOCWdYKaOTRlLFpLllUBP_kXh/camera_chest/000120": []
+ "ddEl0JtxAC3nnXI00uzGQH9cqwAK_uOu/camera_chest/000024": [
+  {
+   "box": [
+    478,
+    176,
+    528,
+    293
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    284,
+    292,
+    312,
+    372
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    305,
+    282,
+    332,
+    370
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    323,
+    274,
+    360,
+    366
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    382,
+    227,
+    408,
+    290
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    400,
+    223,
+    417,
+    265
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    25,
+    218,
+    117,
+    282
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    83,
+    174,
+    191,
+    271
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    163,
+    192,
+    343,
+    328
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    322,
+    198,
+    363,
+    279
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    381,
+    200,
+    413,
+    227
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    231,
+    50,
+    292
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    364,
+    0,
+    391,
+    297
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    178,
+    0,
+    219,
+    452
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    329,
+    16,
+    372,
+    300
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "ddEl0JtxAC3nnXI00uzGQH9cqwAK_uOu/camera_chest/000036": [
+  {
+   "box": [
+    526,
+    185,
+    562,
+    293
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    552,
+    178,
+    582,
+    254
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    299,
+    290,
+    333,
+    389
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    332,
+    282,
+    357,
+    363
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    348,
+    273,
+    388,
+    370
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    423,
+    225,
+    453,
+    296
+   ],
+   "label": "obstacle",
+   "in_path": true
+  },
+  {
+   "box": [
+    444,
+    229,
+    458,
+    281
+   ],
+   "label": "obstacle",
+   "in_path": true
+  },
+  {
+   "box": [
+    67,
+    207,
+    140,
+    271
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    169,
+    167,
+    260,
+    260
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    193,
+    191,
+    378,
+    315
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    357,
+    198,
+    409,
+    286
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    424,
+    202,
+    457,
+    232
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    0,
+    219,
+    90,
+    282
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    402,
+    0,
+    431,
+    302
+   ],
+   "label": "pole",
+   "in_path": true
+  },
+  {
+   "box": [
+    129,
+    0,
+    182,
+    498
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    358,
+    0,
+    413,
+    300
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "ddEl0JtxAC3nnXI00uzGQH9cqwAK_uOu/camera_chest/000048": [
+  {
+   "box": [
+    502,
+    149,
+    541,
+    262
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    533,
+    144,
+    559,
+    234
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    233,
+    281,
+    269,
+    388
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    275,
+    267,
+    299,
+    359
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    286,
+    254,
+    339,
+    369
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    389,
+    192,
+    424,
+    272
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    414,
+    199,
+    433,
+    257
+   ],
+   "label": "obstacle",
+   "in_path": true
+  },
+  {
+   "box": [
+    24,
+    177,
+    123,
+    244
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    88,
+    140,
+    225,
+    233
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    130,
+    154,
+    352,
+    311
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    308,
+    157,
+    416,
+    263
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    398,
+    166,
+    461,
+    209
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    0,
+    182,
+    80,
+    252
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    464,
+    173,
+    497,
+    194
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    360,
+    0,
+    402,
+    279
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    304,
+    0,
+    377,
+    290
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "ddEl0JtxAC3nnXI00uzGQH9cqwAK_uOu/camera_chest/000060": [
+  {
+   "box": [
+    493,
+    182,
+    532,
+    294
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    523,
+    176,
+    549,
+    249
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    154,
+    351,
+    199,
+    481
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    213,
+    326,
+    246,
+    438
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    223,
+    319,
+    288,
+    452
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    362,
+    232,
+    403,
+    319
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    393,
+    235,
+    416,
+    289
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    219,
+    89,
+    297
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    43,
+    177,
+    206,
+    256
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    72,
+    194,
+    319,
+    368
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    315,
+    195,
+    389,
+    309
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    384,
+    202,
+    447,
+    253
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    446,
+    204,
+    487,
+    239
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    320,
+    0,
+    378,
+    327
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    247,
+    0,
+    342,
+    343
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "ddEl0JtxAC3nnXI00uzGQH9cqwAK_uOu/camera_chest/000072": [
+  {
+   "box": [
+    409,
+    198,
+    453,
+    309
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    442,
+    189,
+    469,
+    265
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    0,
+    508,
+    24,
+    597
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    42,
+    387,
+    94,
+    521
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    56,
+    369,
+    149,
+    547
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    259,
+    256,
+    311,
+    351
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    311,
+    260,
+    344,
+    303
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    210,
+    107,
+    256
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    222,
+    228,
+    392
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    189,
+    220,
+    318,
+    355
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    292,
+    223,
+    368,
+    268
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    367,
+    218,
+    409,
+    258
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    214,
+    0,
+    284,
+    369
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    117,
+    0,
+    227,
+    385
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    185,
+    20,
+    374,
+    305
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "ddEl0JtxAC3nnXI00uzGQH9cqwAK_uOu/camera_chest/000084": [
+  {
+   "box": [
+    387,
+    200,
+    432,
+    314
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    424,
+    191,
+    452,
+    267
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    208,
+    256,
+    267,
+    366
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    277,
+    258,
+    318,
+    318
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    206,
+    71,
+    228
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    223,
+    173,
+    434
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    114,
+    217,
+    194,
+    374
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    263,
+    222,
+    344,
+    271
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    343,
+    223,
+    388,
+    246
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    204,
+    222,
+    286,
+    322
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    162,
+    40,
+    237,
+    387
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    31,
+    0,
+    153,
+    418
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    177,
+    0,
+    403,
+    315
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "ddEl0JtxAC3nnXI00uzGQH9cqwAK_uOu/camera_chest/000096": [
+  {
+   "box": [
+    463,
+    183,
+    505,
+    300
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    504,
+    177,
+    530,
+    253
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    256,
+    242,
+    314,
+    360
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    327,
+    243,
+    377,
+    302
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    168,
+    153,
+    192
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    188,
+    229,
+    424
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    182,
+    194,
+    298,
+    300
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    334,
+    202,
+    422,
+    267
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    421,
+    206,
+    467,
+    231
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    257,
+    193,
+    345,
+    339
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    210,
+    0,
+    289,
+    398
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    63,
+    0,
+    228,
+    432
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    231,
+    0,
+    484,
+    302
+   ],
+   "label": "tree",
+   "in_path": true
+  }
+ ],
+ "ddEl0JtxAC3nnXI00uzGQH9cqwAK_uOu/camera_chest/000108": [
+  {
+   "box": [
+    490,
+    158,
+    528,
+    274
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    527,
+    155,
+    562,
+    224
+   ],
+   "label": "pedestrian",
+   "in_path": true
+  },
+  {
+   "box": [
+    237,
+    209,
+    308,
+    351
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    357,
+    213,
+    393,
+    282
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    16,
+    122,
+    262,
+    160
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    23,
+    144,
+    210,
+    387
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    169,
+    154,
+    309,
+    300
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    374,
+    173,
+    446,
+    242
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    461,
+    182,
+    493,
+    206
+   ],
+   "label": "vehicle",
+   "in_path": true
+  },
+  {
+   "box": [
+    283,
+    162,
+    364,
+    282
+   ],
+   "label": "vehicle",
+   "in_path": false
+  },
+  {
+   "box": [
+    180,
+    0,
+    289,
+    389
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    71,
+    64,
+    456
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    254,
+    123,
+    402,
+    182
+   ],
+   "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    235,
+    0,
+    509,
+    275
+   ],
+   "label": "tree",
+   "in_path": true
+  }
+ ],
+ "pLx7nHA3heIzjrIMBy4AVjuT6GnwneSR/camera_chest/000000": [
+  {
+   "box": [
+    0,
+    479,
+    71,
+    619
+   ],
+   "label": "obstacle",
+   "in_path": false
+  },
+  {
+   "box": [
+    488,
+    0,
+    543,
+    288
+   ],
+   "label": "pole",
+   "in_path": true
+  },
+  {
+   "box": [
+    256,
+    0,
+    359,
+    408
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "pLx7nHA3heIzjrIMBy4AVjuT6GnwneSR/camera_chest/000012": [
+  {
+   "box": [
+    463,
+    0,
+    498,
+    244
+   ],
+   "label": "pole",
+   "in_path": true
+  },
+  {
+   "box": [
+    114,
+    0,
+    304,
+    379
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "pLx7nHA3heIzjrIMBy4AVjuT6GnwneSR/camera_chest/000024": [
+  {
+   "box": [
+    508,
+    0,
+    544,
+    189
+   ],
+   "label": "pole",
+   "in_path": true
+  },
+  {
+   "box": [
+    198,
+    0,
+    283,
+    355
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "pLx7nHA3heIzjrIMBy4AVjuT6GnwneSR/camera_chest/000036": [
+  {
+   "box": [
+    339,
+    0,
+    402,
+    234
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    407,
+    17,
+    488
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "pLx7nHA3heIzjrIMBy4AVjuT6GnwneSR/camera_chest/000048": [
+  {
+   "box": [
+    0,
+    0,
+    349,
+    293
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    322,
+    0,
+    421,
+    269
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "pLx7nHA3heIzjrIMBy4AVjuT6GnwneSR/camera_chest/000060": [
+  {
+   "box": [
+    278,
+    0,
+    332,
+    233
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    312,
+    0,
+    359,
+    209
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "pLx7nHA3heIzjrIMBy4AVjuT6GnwneSR/camera_chest/000072": [
+  {
+   "box": [
+    311,
+    0,
+    360,
+    243
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    348,
+    0,
+    402,
+    224
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "pLx7nHA3heIzjrIMBy4AVjuT6GnwneSR/camera_chest/000084": [
+  {
+   "box": [
+    213,
+    0,
+    277,
+    284
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    269,
+    0,
+    326,
+    252
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "pLx7nHA3heIzjrIMBy4AVjuT6GnwneSR/camera_chest/000096": [
+  {
+   "box": [
+    89,
+    0,
+    192,
+    340
+   ],
+   "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    178,
+    0,
+    228,
+    303
+   ],
+   "label": "tree",
+   "in_path": false
+  }
+ ],
+ "pLx7nHA3heIzjrIMBy4AVjuT6GnwneSR/camera_chest/000108": [
+  {
+   "box": [
+    374,
+    0,
+    450,
+    282
+   ],
+   "label": "pole",
+   "in_path": true
+  },
+  {
+   "box": [
+    446,
+    0,
+    498,
+    232
+   ],
+   "label": "tree",
+   "in_path": true
+  }
+ ]
 }
