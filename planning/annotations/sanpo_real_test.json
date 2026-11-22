@@ -273,6 +273,16 @@
    ],
    "label": "tree",
    "in_path": false
+  },
+  {
+   "box": [
+    218,
+    53,
+    287,
+    127
+   ],
+   "label": "building",
+   "in_path": false
   }
  ],
  "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl/camera_chest/000036": [
@@ -384,6 +394,46 @@
     243
    ],
    "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    1069,
+    264,
+    1280,
+    289
+   ],
+   "label": "barrier",
+   "in_path": false
+  },
+  {
+   "box": [
+    822,
+    268,
+    1038,
+    292
+   ],
+   "label": "barrier",
+   "in_path": true
+  },
+  {
+   "box": [
+    1214,
+    98,
+    1280,
+    232
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    1077,
+    105,
+    1195,
+    243
+   ],
+   "label": "building",
    "in_path": false
   }
  ],
@@ -497,6 +547,26 @@
    ],
    "label": "tree",
    "in_path": false
+  },
+  {
+   "box": [
+    869,
+    373,
+    1157,
+    410
+   ],
+   "label": "barrier",
+   "in_path": false
+  },
+  {
+   "box": [
+    1149,
+    225,
+    1258,
+    367
+   ],
+   "label": "building",
+   "in_path": false
   }
  ],
  "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl/camera_chest/000060": [
@@ -599,6 +669,16 @@
    ],
    "label": "tree",
    "in_path": false
+  },
+  {
+   "box": [
+    953,
+    293,
+    1280,
+    327
+   ],
+   "label": "barrier",
+   "in_path": false
   }
  ],
  "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl/camera_chest/000072": [
@@ -691,6 +771,16 @@
    ],
    "label": "tree",
    "in_path": false
+  },
+  {
+   "box": [
+    1033,
+    299,
+    1280,
+    328
+   ],
+   "label": "barrier",
+   "in_path": false
   }
  ],
  "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl/camera_chest/000084": [
@@ -782,6 +872,26 @@
     308
    ],
    "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    1088,
+    271,
+    1280,
+    314
+   ],
+   "label": "barrier",
+   "in_path": false
+  },
+  {
+   "box": [
+    174,
+    0,
+    263,
+    109
+   ],
+   "label": "building",
    "in_path": false
   }
  ],
@@ -957,6 +1067,16 @@
    ],
    "label": "tree",
    "in_path": false
+  },
+  {
+   "box": [
+    79,
+    31,
+    238,
+    155
+   ],
+   "label": "building",
+   "in_path": false
   }
  ],
  "YnCjnEzv2rFXfyDKwJNehsHg9_l8cPDs/camera_chest/000000": [
@@ -1069,6 +1189,26 @@
    ],
    "label": "tree",
    "in_path": true
+  },
+  {
+   "box": [
+    0,
+    0,
+    422,
+    712
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    883,
+    0,
+    1117,
+    68
+   ],
+   "label": "building",
+   "in_path": false
   }
  ],
  "YnCjnEzv2rFXfyDKwJNehsHg9_l8cPDs/camera_chest/000012": [
@@ -1130,6 +1270,26 @@
     84
    ],
    "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    449,
+    214
+   ],
+   "label": "building",
+   "in_path": true
+  },
+  {
+   "box": [
+    0,
+    311,
+    60,
+    678
+   ],
+   "label": "building",
    "in_path": false
   }
  ],
@@ -1196,6 +1356,16 @@
   },
   {
    "box": [
+    561,
+    0,
+    612,
+    74
+   ],
+   "label": "traffic light",
+   "in_path": true
+  },
+  {
+   "box": [
     785,
     0,
     814,
@@ -1253,6 +1423,36 @@
    ],
    "label": "tree",
    "in_path": true
+  },
+  {
+   "box": [
+    0,
+    0,
+    373,
+    376
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    904,
+    0,
+    1086,
+    97
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    1097,
+    0,
+    1212,
+    111
+   ],
+   "label": "building",
+   "in_path": false
   }
  ],
  "YnCjnEzv2rFXfyDKwJNehsHg9_l8cPDs/camera_chest/000036": [
@@ -1338,6 +1538,16 @@
   },
   {
    "box": [
+    686,
+    0,
+    724,
+    149
+   ],
+   "label": "traffic light",
+   "in_path": true
+  },
+  {
+   "box": [
     976,
     0,
     1001,
@@ -1405,6 +1615,56 @@
    ],
    "label": "tree",
    "in_path": false
+  },
+  {
+   "box": [
+    8,
+    0,
+    195,
+    47
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    479,
+    517
+   ],
+   "label": "building",
+   "in_path": true
+  },
+  {
+   "box": [
+    1059,
+    0,
+    1244,
+    152
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    760,
+    25,
+    890,
+    119
+   ],
+   "label": "building",
+   "in_path": true
+  },
+  {
+   "box": [
+    44,
+    63,
+    233,
+    114
+   ],
+   "label": "wall/fence",
+   "in_path": false
   }
  ],
  "YnCjnEzv2rFXfyDKwJNehsHg9_l8cPDs/camera_chest/000048": [
@@ -1456,6 +1716,16 @@
     367
    ],
    "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    330,
+    372
+   ],
+   "label": "building",
    "in_path": false
   }
  ],
@@ -1562,6 +1832,16 @@
   },
   {
    "box": [
+    488,
+    0,
+    514,
+    73
+   ],
+   "label": "traffic light",
+   "in_path": true
+  },
+  {
+   "box": [
     893,
     18,
     1025,
@@ -1618,6 +1898,26 @@
     31
    ],
    "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    210,
+    336
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    914,
+    7,
+    1002,
+    63
+   ],
+   "label": "building",
    "in_path": false
   }
  ],
@@ -1714,6 +2014,16 @@
   },
   {
    "box": [
+    523,
+    0,
+    564,
+    154
+   ],
+   "label": "traffic light",
+   "in_path": true
+  },
+  {
+   "box": [
     917,
     0,
     1004,
@@ -1781,6 +2091,36 @@
    ],
    "label": "tree",
    "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    209,
+    410
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    603,
+    0,
+    822,
+    98
+   ],
+   "label": "building",
+   "in_path": true
+  },
+  {
+   "box": [
+    1119,
+    32,
+    1279,
+    162
+   ],
+   "label": "building",
+   "in_path": false
   }
  ],
  "YnCjnEzv2rFXfyDKwJNehsHg9_l8cPDs/camera_chest/000084": [
@@ -1832,6 +2172,16 @@
     134
    ],
    "label": "pole",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    132,
+    267
+   ],
+   "label": "building",
    "in_path": false
   }
  ],
@@ -1948,6 +2298,16 @@
   },
   {
    "box": [
+    494,
+    0,
+    521,
+    114
+   ],
+   "label": "traffic light",
+   "in_path": true
+  },
+  {
+   "box": [
     1035,
     0,
     1081,
@@ -2014,6 +2374,46 @@
     65
    ],
    "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    564,
+    0,
+    808,
+    65
+   ],
+   "label": "building",
+   "in_path": true
+  },
+  {
+   "box": [
+    816,
+    0,
+    1054,
+    113
+   ],
+   "label": "building",
+   "in_path": true
+  },
+  {
+   "box": [
+    1072,
+    0,
+    1132,
+    114
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    1141,
+    0,
+    1279,
+    114
+   ],
+   "label": "building",
    "in_path": false
   }
  ],
@@ -2120,6 +2520,16 @@
   },
   {
    "box": [
+    333,
+    0,
+    385,
+    152
+   ],
+   "label": "traffic light",
+   "in_path": false
+  },
+  {
+   "box": [
     954,
     0,
     989,
@@ -2196,6 +2606,36 @@
     43
    ],
    "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    429,
+    0,
+    674,
+    100
+   ],
+   "label": "building",
+   "in_path": true
+  },
+  {
+   "box": [
+    724,
+    0,
+    969,
+    142
+   ],
+   "label": "building",
+   "in_path": true
+  },
+  {
+   "box": [
+    1008,
+    0,
+    1279,
+    134
+   ],
+   "label": "building",
    "in_path": false
   }
  ],
@@ -2358,6 +2798,46 @@
     323
    ],
    "label": "tree",
+   "in_path": true
+  },
+  {
+   "box": [
+    0,
+    0,
+    360,
+    293
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    558,
+    0,
+    1195,
+    309
+   ],
+   "label": "building",
+   "in_path": true
+  },
+  {
+   "box": [
+    668,
+    0,
+    1280,
+    720
+   ],
+   "label": "wall/fence",
+   "in_path": true
+  },
+  {
+   "box": [
+    281,
+    381,
+    498,
+    488
+   ],
+   "label": "wall/fence",
    "in_path": true
   }
  ],
@@ -2531,6 +3011,76 @@
    ],
    "label": "tree",
    "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    195,
+    218
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    189,
+    0,
+    312,
+    176
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    427,
+    0,
+    768,
+    242
+   ],
+   "label": "building",
+   "in_path": true
+  },
+  {
+   "box": [
+    1098,
+    0,
+    1280,
+    243
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    833,
+    183,
+    1052,
+    229
+   ],
+   "label": "building",
+   "in_path": true
+  },
+  {
+   "box": [
+    544,
+    0,
+    1239,
+    548
+   ],
+   "label": "wall/fence",
+   "in_path": true
+  },
+  {
+   "box": [
+    72,
+    328,
+    343,
+    474
+   ],
+   "label": "wall/fence",
+   "in_path": false
   }
  ],
  "ddEl0JtxAC3nnXI00uzGQH9cqwAK_uOu/camera_chest/000024": [
@@ -2682,6 +3232,66 @@
     300
    ],
    "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    188,
+    232
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    212,
+    0,
+    337,
+    200
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    488,
+    0,
+    938,
+    272
+   ],
+   "label": "building",
+   "in_path": true
+  },
+  {
+   "box": [
+    1053,
+    281,
+    1280,
+    326
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    609,
+    0,
+    1280,
+    720
+   ],
+   "label": "wall/fence",
+   "in_path": true
+  },
+  {
+   "box": [
+    3,
+    392,
+    357,
+    574
+   ],
+   "label": "wall/fence",
    "in_path": false
   }
  ],
@@ -2845,6 +3455,56 @@
    ],
    "label": "tree",
    "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    138,
+    227
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    160,
+    0,
+    374,
+    200
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    529,
+    0,
+    1068,
+    288
+   ],
+   "label": "building",
+   "in_path": true
+  },
+  {
+   "box": [
+    669,
+    0,
+    1280,
+    720
+   ],
+   "label": "wall/fence",
+   "in_path": true
+  },
+  {
+   "box": [
+    0,
+    417,
+    360,
+    644
+   ],
+   "label": "wall/fence",
+   "in_path": false
   }
  ],
  "ddEl0JtxAC3nnXI00uzGQH9cqwAK_uOu/camera_chest/000048": [
@@ -3007,6 +3667,56 @@
    ],
    "label": "tree",
    "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    320,
+    199
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    528,
+    0,
+    862,
+    262
+   ],
+   "label": "building",
+   "in_path": true
+  },
+  {
+   "box": [
+    683,
+    0,
+    1280,
+    720
+   ],
+   "label": "wall/fence",
+   "in_path": true
+  },
+  {
+   "box": [
+    336,
+    273,
+    439,
+    337
+   ],
+   "label": "wall/fence",
+   "in_path": true
+  },
+  {
+   "box": [
+    0,
+    449,
+    265,
+    720
+   ],
+   "label": "wall/fence",
+   "in_path": false
   }
  ],
  "ddEl0JtxAC3nnXI00uzGQH9cqwAK_uOu/camera_chest/000060": [
@@ -3158,6 +3868,46 @@
     343
    ],
    "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    299,
+    229
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    499,
+    0,
+    902,
+    319
+   ],
+   "label": "building",
+   "in_path": true
+  },
+  {
+   "box": [
+    705,
+    0,
+    1280,
+    720
+   ],
+   "label": "wall/fence",
+   "in_path": true
+  },
+  {
+   "box": [
+    263,
+    318,
+    418,
+    424
+   ],
+   "label": "wall/fence",
    "in_path": false
   }
  ],
@@ -3311,6 +4061,56 @@
    ],
    "label": "tree",
    "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    167,
+    225
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    425,
+    0,
+    720,
+    343
+   ],
+   "label": "building",
+   "in_path": true
+  },
+  {
+   "box": [
+    154,
+    59,
+    227,
+    162
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    693,
+    0,
+    1280,
+    720
+   ],
+   "label": "wall/fence",
+   "in_path": true
+  },
+  {
+   "box": [
+    132,
+    354,
+    328,
+    469
+   ],
+   "label": "wall/fence",
+   "in_path": false
   }
  ],
  "ddEl0JtxAC3nnXI00uzGQH9cqwAK_uOu/camera_chest/000084": [
@@ -3442,6 +4242,56 @@
     315
    ],
    "label": "tree",
+   "in_path": false
+  },
+  {
+   "box": [
+    0,
+    0,
+    82,
+    223
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    48,
+    0,
+    167,
+    225
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    397,
+    0,
+    892,
+    429
+   ],
+   "label": "building",
+   "in_path": true
+  },
+  {
+   "box": [
+    822,
+    0,
+    1280,
+    720
+   ],
+   "label": "wall/fence",
+   "in_path": true
+  },
+  {
+   "box": [
+    0,
+    384,
+    272,
+    524
+   ],
+   "label": "wall/fence",
    "in_path": false
   }
  ],
@@ -3575,6 +4425,66 @@
    ],
    "label": "tree",
    "in_path": true
+  },
+  {
+   "box": [
+    0,
+    0,
+    89,
+    180
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    244,
+    0,
+    309,
+    127
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    493,
+    0,
+    1280,
+    643
+   ],
+   "label": "building",
+   "in_path": true
+  },
+  {
+   "box": [
+    96,
+    10,
+    235,
+    197
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    308,
+    268,
+    433,
+    337
+   ],
+   "label": "wall/fence",
+   "in_path": true
+  },
+  {
+   "box": [
+    0,
+    397,
+    298,
+    566
+   ],
+   "label": "wall/fence",
+   "in_path": false
   }
  ],
  "ddEl0JtxAC3nnXI00uzGQH9cqwAK_uOu/camera_chest/000108": [
@@ -3717,6 +4627,56 @@
    ],
    "label": "tree",
    "in_path": true
+  },
+  {
+   "box": [
+    0,
+    0,
+    209,
+    157
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    224,
+    0,
+    293,
+    163
+   ],
+   "label": "building",
+   "in_path": false
+  },
+  {
+   "box": [
+    529,
+    0,
+    1280,
+    684
+   ],
+   "label": "building",
+   "in_path": true
+  },
+  {
+   "box": [
+    304,
+    243,
+    459,
+    319
+   ],
+   "label": "wall/fence",
+   "in_path": true
+  },
+  {
+   "box": [
+    0,
+    402,
+    260,
+    627
+   ],
+   "label": "wall/fence",
+   "in_path": false
   }
  ],
  "pLx7nHA3heIzjrIMBy4AVjuT6GnwneSR/camera_chest/000000": [
