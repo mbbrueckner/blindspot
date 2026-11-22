@@ -237,6 +237,25 @@ def run_script(name, *args):
     module.main([str(a) for a in args])
 
 
+def test_apply_annotations_matches_by_frame_id_and_validates_boxes():
+    a, b = make_sample(None), make_sample(None)
+    a.frame_id, b.frame_id = "a", "b"
+    ob = Obstacle((1, 1, 10, 10), "pole", True)
+    assert evaluation.apply_annotations([a, b], {"a": [ob], "x": []}) == 1
+    assert a.obstacles == [ob] and b.obstacles is None  # unmatched stays "not annotated"
+    for bad in [(1, 1, 61, 10), (5, 5, 5, 9), (-1, 0, 4, 4)]:  # sample is 60x30
+        with pytest.raises(ValueError):
+            evaluation.apply_annotations([a], {"a": [Obstacle(bad, "pole", True)]})
+
+
+def test_load_samples_and_missing_session(tmp_path):
+    write_session(tmp_path)
+    samples = sanpo.load_samples(tmp_path, ["sess"])
+    assert [s.frame_id for s in samples] == ["sess/camera_chest/000003"]
+    with pytest.raises(FileNotFoundError):
+        sanpo.load_samples(tmp_path, ["nope"])
+
+
 def test_make_splits_script(tmp_path):
     folder = tmp_path / "data" / "real"
     folder.mkdir(parents=True)
@@ -250,3 +269,24 @@ def test_make_splits_script(tmp_path):
     assert len(train) + len(val) == 10 and not set(train) & set(val)
     with pytest.raises(SystemExit):  # synthetic was never downloaded
         run_script("make_splits", "--kind", "synthetic", "--data", tmp_path / "data", "--out", out)
+
+
+def test_evaluate_script_end_to_end(tmp_path):
+    write_session(tmp_path)
+    split = tmp_path / "test.txt"
+    split.write_text("sess\n")
+    ann = tmp_path / "ann.json"  # depth is 2.5 m except one invalid pixel, so the obstacle is in range
+    ann.write_text(
+        json.dumps({"sess/camera_chest/000003": [{"box": [1, 1, 4, 3], "label": "pole", "in_path": True}]})
+    )
+    out = tmp_path / "res.json"
+    args = ["--root", tmp_path, "--split", split, "--out", out, "--annotations", ann]
+    run_script("evaluate", *args, "--variant", "blindspot.variants:constant_depth")
+    res = json.loads(out.read_text())
+    assert res["n_frames"] == 1 and res["n_annotated"] == 1
+    assert (
+        res["warnings"]["n_positive"] == 1 and res["warnings"]["recall"] == 0.0
+    )  # sanity floor never alerts
+    assert res["depth"]["abs_rel"] == pytest.approx((4.0 - 2.5) / 2.5)
+    with pytest.raises(ValueError):
+        run_script("evaluate", *args, "--variant", "no_colon")
