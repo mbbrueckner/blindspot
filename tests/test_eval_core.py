@@ -78,8 +78,8 @@ def test_cache_roundtrip_float16_and_staleness(tmp_path):
     back = cache.load("m", "rec/000001")
     assert back.dtype == np.float32 and back[0, 0] == pytest.approx(1.2345, rel=1e-3)
     assert back[0, 1] == pytest.approx(65504)  # clipped to the float16 range
-    cache.write_json("m", "meta", {"v": 1})
-    assert not cache.invalidate_if_stale("m", {"v": 1})
+    cache.write_json("m", "meta", {"v": 1, "note": "old descriptive field"})
+    assert not cache.invalidate_if_stale("m", {"v": 1})  # extra stored fields are ignored
     assert cache.invalidate_if_stale("m", {"v": 2}) and not cache.has("m", "rec/000001")
     with pytest.raises(ValueError):
         cache.path("m", "../escape")

@@ -75,15 +75,18 @@ class PredictionCache:
     def invalidate_if_stale(self, model: str, meta: dict) -> bool:
         """Deletes the model's cached predictions if the stored meta differs from ``meta``.
 
+        Only the keys in ``meta`` are compared; additional keys in the stored meta (e.g. descriptive fields
+        written by an older version) are ignored.
+
         Args:
             model: Registry name.
-            meta: Current model meta (info and cache version).
+            meta: Current model meta (the fields that determine the predictions).
 
         Returns:
             True if the cache was cleared.
         """
         old = self.read_json(model, "meta")
-        if old is None or old == json.loads(json.dumps(meta, default=str)):
+        if old is None or _matches(old, json.loads(json.dumps(meta, default=str))):
             return False
         self.clear(model)
         return True
@@ -96,3 +99,10 @@ class PredictionCache:
         for p in sorted(folder.rglob("*"), reverse=True):
             p.unlink() if p.is_file() else p.rmdir()
         folder.rmdir()
+
+
+def _matches(old, new) -> bool:
+    """True if every key of ``new`` exists in ``old`` with an equal value (recursively for dicts)."""
+    if isinstance(new, dict):
+        return isinstance(old, dict) and all(k in old and _matches(old[k], v) for k, v in new.items())
+    return old == new

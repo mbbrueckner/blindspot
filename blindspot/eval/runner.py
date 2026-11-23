@@ -68,9 +68,14 @@ def evaluate_variant(
     }
 
 
+# Fields of ModelInfo that determine the predictions; changing them invalidates the cache. Descriptive
+# fields such as the label, notes or install hint do not.
+CACHE_FIELDS = ("name", "kind", "uses_intrinsics", "source", "cache_version")
+
+
 def _cache_meta(info) -> dict:
     """What identifies a model's cached predictions (changes invalidate the cache)."""
-    return {"info": info.to_dict()}
+    return {"info": {k: v for k, v in info.to_dict().items() if k in CACHE_FIELDS}}
 
 
 def predict_models(
