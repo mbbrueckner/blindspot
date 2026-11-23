@@ -6,14 +6,16 @@ range), with the frame's tags. Aggregation is a mean over frames (as in
 """
 
 from collections import defaultdict
-from typing import Sequence
+from dataclasses import replace
+from typing import Callable, Optional, Sequence
 
 import numpy as np
 
+from blindspot.alerts.corridor import CorridorConfig
 from blindspot.core import Sample
 from blindspot.eval.alignment import ALIGNMENTS, align, clip_depth, resize_to
 from blindspot.eval.cache import PredictionCache
-from blindspot.eval.metrics import DEPTH_RANGES, binned_abs_rel, range_metrics
+from blindspot.eval.metrics import DEPTH_RANGES, binned_abs_rel, range_metrics, warning_metrics
 
 METRICS = ("abs_rel", "rmse", "delta1")
 # Tags used for grouping; "obstacles" may hold several values joined with "-".
@@ -183,6 +185,75 @@ def distance_curves(binned: dict, bin_m: float = 0.5, min_pixels: int = 100) -> 
     return out
 
 
+def score_warnings(
+    models: Sequence[str],
+    samples: Sequence[Sample],
+    cache: PredictionCache,
+    logics: dict[str, Callable],
+    cfg: CorridorConfig,
+    include_reference: bool = True,
+) -> list[dict]:
+    """Warning metrics of variants "model + alert logic", computed from cached raw (metric) predictions.
+
+    Also reports the alert rate (share of frames with at least one alert), which is meaningful even
+    without obstacle annotation. With ``include_reference`` the alert logics also run on the reference
+    depth ("reference" pseudo-model): an oracle that measures the alert logic alone.
+
+    Args:
+        models: Metric model names.
+        samples: Test images; recall etc. need ``Sample.obstacles``.
+        cache: Prediction cache.
+        logics: Name -> alert function ``fn(depth, intrinsics, cfg)``.
+        cfg: Corridor parameters (``warn_range_m`` is also the evaluation range); the camera height is
+            taken per frame from the ``camera_height_m`` tag (manifest) where available.
+        include_reference: Add the oracle rows.
+
+    Returns:
+        Rows with ``variant``, ``model``, ``logic``, ``dataset``, ``alert_rate``, ``n_frames``,
+        ``n_annotated`` and the metrics of :func:`~blindspot.eval.metrics.warning_metrics`.
+    """
+    rows = []
+    by_dataset: dict[str, list[Sample]] = defaultdict(list)
+    for s in samples:
+        by_dataset[s.tags.get("dataset", "?")].append(s)
+    sources: list[tuple[str, Optional[str]]] = [(m, m) for m in models]
+    if include_reference:
+        sources.append(("reference", None))
+    for model, cache_name in sources:
+        for dataset, ds in by_dataset.items():
+            usable = [s for s in ds if cache_name is None or cache.has(cache_name, s.frame_id)]
+            if not usable:
+                continue
+            depths = [
+                s.depth
+                if cache_name is None
+                else resize_to(cache.load(cache_name, s.frame_id), s.depth.shape)
+                for s in usable
+            ]
+            cfgs = [_corridor_for(s, cfg) for s in usable]
+            for logic, fn in logics.items():
+                alerts = [fn(d, s.intrinsics, c) for d, s, c in zip(depths, usable, cfgs)]
+                rows.append(
+                    {
+                        "variant": f"{model}+{logic}",
+                        "model": model,
+                        "logic": logic,
+                        "dataset": dataset,
+                        "alert_rate": float(np.mean([bool(a) for a in alerts])),
+                        "n_frames": len(usable),
+                        "n_annotated": sum(s.obstacles is not None for s in usable),
+                        **warning_metrics(usable, alerts, cfg.warn_range_m),
+                    }
+                )
+    return rows
+
+
+def _corridor_for(sample: Sample, cfg: CorridorConfig) -> CorridorConfig:
+    """Corridor configuration with the recording's measured camera height (manifest), if known."""
+    height = sample.tags.get("camera_height_m")
+    return replace(cfg, camera_height_m=float(height)) if height else cfg
+
+
 __all__ = [
     "DEPTH_RANGES",
     "aggregate",
@@ -191,4 +262,5 @@ __all__ = [
     "distance_curves",
     "primary_alignment",
     "score_frames",
+    "score_warnings",
 ]

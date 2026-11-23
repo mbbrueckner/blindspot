@@ -23,6 +23,9 @@ blindspot/
     registry.py        short names, groups (tier1, mobile, camera, ...), lazy construction
     midas.py, hf.py (Depth Anything V2, ZoeDepth, Depth Pro), metric3d.py, yolo.py, zipdepth.py,
     moge.py, unidepth.py, da3.py
+  alerts/            alert logic (WP 3.1)
+    corridor.py        walking corridor in 3D and alerts per image third
+    naive.py           naive baseline without corridor
   eval/              evaluation framework (WP 5.1, 2.1)
     metrics.py         depth error (per depth range, binned by distance), alert metrics, latency
     alignment.py       raw, median and affine alignment (the last two are an oracle)
@@ -51,7 +54,7 @@ results are never committed. Weights are cached in `~/.cache/blindspot/weights` 
 
 ## Setup
 
-Dependencies are managed with [uv](https://docs.astral.sh/uv/). The core (loaders, metrics) only
+Dependencies are managed with [uv](https://docs.astral.sh/uv/). The core (loaders, metrics, alert logic) only
 needs numpy, OpenCV and Pillow; everything else is an extra:
 
 | Extra | Contents |
@@ -140,7 +143,7 @@ Results of a run go to `results/<run-name>/` (default `<preset>_<date>_<time>`):
 
 | File | Contents |
 |---|---|
-| `report.md` | tables (performance, accuracy per alignment and depth range, scene tags) with the figures linked |
+| `report.md` | tables (performance, accuracy per alignment and depth range, scene tags, alerts) with the figures linked |
 | `report.json` | configuration, environment, model status and performance, all aggregated and per-frame metrics |
 | `figures/` | per dataset, each as PNG (slides) and PDF (LaTeX): accuracy vs. speed, raw vs. scaled, accuracy by distance range, error over distance (models from `highlight` in the config), day/night and indoor/outdoor (own recordings) |
 
@@ -151,4 +154,5 @@ with its reason and the run continues.
 What is measured: AbsRel, RMSE and δ1 per depth range (0-2, 2-5, 5-10 m, all) with three alignments
 (`raw` for metric models; `median` and `affine` use the ground truth and are an oracle upper bound),
 AbsRel binned over distance, parameters, load time, latency (mean, p95, FPS, after warm-up, device
-synchronized) and peak memory. The alert logic (walking corridor, WP 3.1) is developed on its own branch.
+synchronized) and peak memory, and alert metrics (recall, false alarm rate, direction, distance error) of
+"metric model + corridor" and "+ naive baseline" once obstacle annotations exist.

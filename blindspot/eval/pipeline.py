@@ -1,4 +1,4 @@
-"""One evaluation run: load data -> predict (cached) -> score -> figures -> report.
+"""One evaluation run: load data -> predict (cached) -> score -> warnings -> figures -> report.
 
 Results go to ``results/<run_name>/``: ``report.json`` (everything, including per-frame records),
 ``report.md`` and ``figures/`` (PNG for slides, PDF for LaTeX). Predictions are cached in
@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Callable, Optional
 
 from blindspot import device as dev
+from blindspot.alerts import ALERT_LOGICS, CorridorConfig
 from blindspot.core import Sample
 from blindspot.data import datasets
 from blindspot.data.annotations import load_annotations
@@ -49,7 +50,7 @@ class RunConfig:
         recompute: Ignore cached predictions.
         max_depth: Largest reference depth that counts (meters).
         annotations: Obstacle annotation JSON files (frame_id -> boxes).
-        warn_range_m: Distance up to which alerts matter, shaded in the error-over-distance figure.
+        corridor: Parameters of the alert logic.
         figures: Write figures (needs matplotlib).
         highlight: Models shown in the error-over-distance figure (comma-separated; missing ones are skipped).
         results_root: Parent folder of the run folders.
@@ -75,7 +76,7 @@ class RunConfig:
     recompute: bool = False
     max_depth: float = 10.0
     annotations: list[Path] = field(default_factory=list)
-    warn_range_m: float = 3.0
+    corridor: CorridorConfig = field(default_factory=CorridorConfig)
     figures: bool = True
     highlight: str = "unidepth2_s,m3d_s,da2m_in_s,da2_s,zipdepth,da3m_l"
     results_root: Path = Path("results")
@@ -216,6 +217,8 @@ def run(cfg: RunConfig, log: Callable[[str], None] = print) -> Path:
     summary = scoring.aggregate(records)
     by_tag = scoring.aggregate_by_tag(records)
     curves = scoring.distance_curves(binned)
+    metric_models = [n for n, k in usable.items() if k == "metric"]
+    warnings = scoring.score_warnings(metric_models, samples, cache, ALERT_LOGICS, cfg.corridor)
     primary = {n: scoring.primary_alignment(k) for n, k in usable.items()}
     ds_names = sorted({s.tags.get("dataset", "?") for s in samples})
     infos = {n: statuses[n]["info"] for n in usable}
@@ -226,7 +229,7 @@ def run(cfg: RunConfig, log: Callable[[str], None] = print) -> Path:
         figures = _make_figures(cfg, summary, by_tag, curves, infos, perf, ds_names, fig_dir, log)
 
     report = _build_report(
-        cfg, device, data_info, statuses, model_names, summary, by_tag, primary, ds_names, figures
+        cfg, device, data_info, statuses, model_names, summary, by_tag, warnings, primary, ds_names, figures
     )
     rep.write_json(
         out / "report.json",
@@ -243,6 +246,7 @@ def run(cfg: RunConfig, log: Callable[[str], None] = print) -> Path:
             "summary": summary,
             "by_tag": by_tag,
             "distance_curves": curves,
+            "warnings": warnings,
             "frames": [{k: v for k, v in r.items()} for r in records],
             "figures": [str(p) for p, _ in figures],
         },
@@ -288,7 +292,9 @@ def _make_figures(
             (
                 "error_over_distance",
                 "AbsRel over the true distance for selected models",
-                lambda stem: plots.error_over_distance(curves, infos, ds, highlight, stem, cfg.warn_range_m),
+                lambda stem: plots.error_over_distance(
+                    curves, infos, ds, highlight, stem, cfg.corridor.warn_range_m
+                ),
             ),
             (
                 "conditions",
@@ -305,7 +311,7 @@ def _make_figures(
 
 
 def _build_report(
-    cfg, device, data_info, statuses, model_names, summary, by_tag, primary, ds_names, figures
+    cfg, device, data_info, statuses, model_names, summary, by_tag, warnings, primary, ds_names, figures
 ) -> rep.Report:
     """Assembles the report blocks."""
     r = rep.Report(f"Blind Spot depth evaluation: {cfg.run_name}")
@@ -386,7 +392,44 @@ def _build_report(
                     for n in scored
                 ],
             )
+        ws = [w for w in warnings if w["dataset"] == ds]
+        if ws:
+            r.h(3, f"Alerts (warning range {cfg.corridor.warn_range_m:g} m, metric models, raw depth)")
+            if not any(w["n_annotated"] for w in ws):
+                r.p(
+                    "No obstacle annotation for this dataset yet: recall, false alarm rate, direction and "
+                    "distance "
+                    "error are not computable. The alert rate (share of frames with an alert) is shown; "
+                    "`reference+...` runs the alert logic on the ground-truth depth."
+                )
+            r.table(
+                [
+                    "variant",
+                    "alert rate",
+                    "recall",
+                    "false alarm rate",
+                    "direction acc.",
+                    "distance MAE [m]",
+                    "pos.",
+                    "neg.",
+                ],
+                [
+                    [
+                        w["variant"],
+                        w["alert_rate"],
+                        w["recall"],
+                        w["false_alarm_rate"],
+                        w["direction_accuracy"],
+                        w["distance_mae_m"],
+                        w["n_positive"],
+                        w["n_negative"],
+                    ]
+                    for w in ws
+                ],
+            )
         for path, caption in figures:
             if path.name.startswith(f"{ds}_") and path.parent.name == "figures":
                 r.figure(path, caption)
+    r.h(2, "Corridor configuration")
+    r.table(["parameter", "value"], [[k, v] for k, v in cfg.corridor.to_dict().items()])
     return r

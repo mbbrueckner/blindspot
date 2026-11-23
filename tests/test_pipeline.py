@@ -77,7 +77,7 @@ def test_predict_models_caches_and_reports_failures(tmp_path):
     assert again["dummy_perfect"]["status"] == "cached" and again["dummy_perfect"]["perf"]["n_timed"] == 3
 
 
-def test_scoring_alignment_ranges_and_tags(tmp_path):
+def test_scoring_alignment_ranges_tags_and_warnings(tmp_path):
     samples = make_samples()
     cache = PredictionCache(tmp_path)
     predict_models(
@@ -104,6 +104,16 @@ def test_scoring_alignment_ranges_and_tags(tmp_path):
     curves = scoring.distance_curves(binned, min_pixels=1)
     far = next(c for c in curves if c["model"] == "dummy_far" and c["alignment"] == "raw")
     assert np.nanmax(far["abs_rel"]) == pytest.approx(1.0, abs=1e-2)
+    from blindspot.alerts import ALERT_LOGICS, CorridorConfig
+
+    rows = scoring.score_warnings(["dummy_perfect"], samples, cache, ALERT_LOGICS, CorridorConfig())
+    assert {r["variant"] for r in rows} == {
+        "dummy_perfect+corridor",
+        "dummy_perfect+naive",
+        "reference+corridor",
+        "reference+naive",
+    }
+    assert all(0 <= r["alert_rate"] <= 1 and r["n_annotated"] == 0 for r in rows)
 
 
 def test_report_renders_markdown_and_json(tmp_path):
