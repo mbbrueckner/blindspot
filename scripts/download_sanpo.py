@@ -19,7 +19,7 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from blindspot.sanpo import CHEST, SANPO_URL  # noqa: E402
+from blindspot.data.sanpo import CHEST, SANPO_URL  # noqa: E402
 
 API = "https://storage.googleapis.com/storage/v1/b/gresearch/o"
 PREFIX = "sanpo_dataset/v0"
