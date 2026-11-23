@@ -91,7 +91,9 @@ def _place_labels(ax, points: list[tuple[float, float, str]], fontsize: int = 8)
             )
 
 
-def accuracy_vs_latency(summary, infos: dict, perf: dict, dataset: str, stem: Path) -> bool:
+def accuracy_vs_latency(
+    summary, infos: dict, perf: dict, dataset: str, stem: Path, figsize: tuple[float, float] = (8, 5)
+) -> bool:
     """Scaled δ1 over latency; point size = parameters, color = model group, dashed line = Pareto front.
 
     Args:
@@ -100,6 +102,8 @@ def accuracy_vs_latency(summary, infos: dict, perf: dict, dataset: str, stem: Pa
         perf: Model name -> performance dict (``mean_ms``, ``n_params``).
         dataset: Dataset to plot.
         stem: Output path without extension.
+        figsize: Figure size in inches; smaller sizes keep the text larger when the figure is shrunk
+            into a document.
     """
     table = _lookup(summary)
     pts = []
@@ -112,7 +116,7 @@ def accuracy_vs_latency(summary, infos: dict, perf: dict, dataset: str, stem: Pa
     if not pts:
         return False
     style.setup()
-    fig, ax = plt.subplots(figsize=(8, 5))
+    fig, ax = plt.subplots(figsize=figsize)
     for x, y, name, group, params in pts:
         ax.scatter(
             x,
