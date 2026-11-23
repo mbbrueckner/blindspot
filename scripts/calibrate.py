@@ -14,7 +14,7 @@ from pathlib import Path
 import cv2
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from blindspot.calibration import calibrate_from_corners, find_corners, save_calibration  # noqa: E402
+from blindspot.data.calibration import calibrate_from_corners, find_corners, save_calibration  # noqa: E402
 
 
 def main() -> None:
