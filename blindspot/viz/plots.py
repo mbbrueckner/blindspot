@@ -156,7 +156,7 @@ def accuracy_vs_latency(
         )
         for m in (10, 100, 1000)
     ]
-    ax.legend(handles=handles, loc="lower right", labelspacing=0.9)
+    ax.legend(handles=handles, loc="upper left", bbox_to_anchor=(1.01, 1.0), labelspacing=0.9)
     style.save(fig, stem)
     return True
 
