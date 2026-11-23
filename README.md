@@ -80,7 +80,7 @@ The device is chosen automatically (CUDA, then MPS, then CPU) or with `--device`
 xFormers and TensorRT are not used. The Mac path is not tested; the CPU path is.
 
 MoGe-2, UniDepthV2 and Depth Anything 3 need their own environments (conflicting pins, see
-[docs/modelle.md](docs/modelle.md)): `bash scripts/setup_model_envs.sh`.
+[docs/models.md](docs/models.md)): `bash scripts/setup_model_envs.sh`.
 
 ## Own recordings (WP 1.3)
 

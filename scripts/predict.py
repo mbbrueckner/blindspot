@@ -1,6 +1,6 @@
 """Fills the prediction cache for models that run in a separate environment (MoGe, UniDepth, DA3).
 
-Run it with the Python of that environment (see docs/modelle.md); afterwards ``run_eval.py`` in the main
+Run it with the Python of that environment (see docs/models.md); afterwards ``run_eval.py`` in the main
 environment finds the cached predictions and scores them. Example::
 
     envs/unidepth/bin/python scripts/predict.py --models unidepth2_s --preset full

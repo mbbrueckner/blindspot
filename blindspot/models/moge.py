@@ -1,6 +1,6 @@
 """MoGe-2 (Microsoft, metric depth from a point map; uses the field of view). Runs in a separate env.
 
-Install: see docs/modelle.md (``moge`` environment).
+Install: see docs/models.md (``moge`` environment).
 """
 
 import math

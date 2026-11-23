@@ -1,6 +1,6 @@
 """Depth Anything 3 (ByteDance Seed). Runs in a separate env (needs Python <= 3.13, numpy < 2, xformers).
 
-Install: see docs/modelle.md (``da3`` environment).
+Install: see docs/models.md (``da3`` environment).
 """
 
 import numpy as np
