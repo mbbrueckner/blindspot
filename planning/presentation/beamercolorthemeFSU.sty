@@ -1,0 +1,22 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamercolorthemeFSU}[2018/12/03 v0.1 FSU theme]
+
+\RequirePackage{beamerthemeFSUcommon}
+
+\colorlet{beamer@mainfg}{cdhausfarbe}
+\colorlet{beamer@mainbg}{black!3}
+\colorlet{beamer@standoutfg}{white}
+\colorlet{beamer@standoutbg}{cdhausfarbe!85}
+\colorlet{beamer@lightbg}{cdhausfarbe!18}
+
+\setbeamercolor{standout frame}{fg=beamer@standoutfg,bg=beamer@standoutbg}
+\setbeamercolor{background canvas}{bg=beamer@mainbg}
+\setbeamercolor{footline}{fg=beamer@standoutfg,bg=beamer@standoutbg}
+\setbeamercolor{structure}{fg=beamer@mainfg}
+\setbeamercolor{normal text}{fg=beamer@mainfg}
+\setbeamercolor{frametitle}{fg=beamer@mainfg}
+\setbeamercolor{title}{fg=beamer@mainfg}
+\setbeamercolor{linkcolor}{fg=beamer@mainfg}
+\setbeamercolor{block title}{fg=beamer@standoutfg, bg=beamer@standoutbg} 
+\setbeamercolor{block body}{parent=normal text, use=block title, bg=beamer@lightbg}
+\setbeamercovered{transparent}
