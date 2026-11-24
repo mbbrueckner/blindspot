@@ -1,6 +1,7 @@
 """Runner, scoring, report and the whole pipeline with dummy models (no torch, no weights)."""
 
 import json
+import pathlib
 
 import numpy as np
 import pytest
@@ -222,3 +223,16 @@ def test_pipeline_constant_baseline_with_sanpo_split_and_annotations(tmp_path):
     ann.write_text(json.dumps({"s2/camera_chest/000000": [wall]}))
     with pytest.raises(ValueError, match="outside"):
         run(make_config("smoke", **{**kwargs, "run_name": "bad"}), log=lambda m: None)
+
+
+def test_full_preset_uses_the_versioned_sanpo_split_and_annotation():
+    from blindspot.data.annotations import load_annotations
+    from blindspot.data.sanpo import read_session_ids
+    from blindspot.eval.pipeline import SANPO_TEST_ANNOTATIONS, SANPO_TEST_SPLIT
+
+    cfg = make_config("full", run_name="x")
+    assert cfg.sanpo_split == SANPO_TEST_SPLIT and cfg.annotations == [SANPO_TEST_ANNOTATIONS]
+    root = pathlib.Path(__file__).resolve().parent.parent
+    sessions = set(read_session_ids(root / SANPO_TEST_SPLIT))
+    annotated = load_annotations(str(root / SANPO_TEST_ANNOTATIONS))
+    assert annotated and {fid.split("/")[0] for fid in annotated} <= sessions

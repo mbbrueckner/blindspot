@@ -9,8 +9,9 @@ import cv2
 import numpy as np
 import pytest
 
-from blindspot import calibration, evaluation, masks, sanpo, splits
+from blindspot import calibration, evaluation, sanpo, splits
 from blindspot.core import Alert, Intrinsics, Obstacle, Sample
+from blindspot.data import masks
 
 K = Intrinsics(100.0, 100.0, 32.0, 24.0)
 
@@ -261,7 +262,6 @@ def test_make_splits_script(tmp_path):
     assert len(train) + len(val) == 10 and not set(train) & set(val)
     with pytest.raises(SystemExit):  # synthetic was never downloaded
         run_script("make_splits", "--kind", "synthetic", "--data", tmp_path / "data", "--out", out)
-
 
 
 # ---- Masks, annotation script and mask-aware download plan (WP 1.4) ----

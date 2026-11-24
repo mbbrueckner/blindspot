@@ -13,8 +13,9 @@ from dataclasses import asdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from blindspot.masks import load_obstacles  # noqa: E402
-from blindspot.sanpo import load_samples, read_session_ids  # noqa: E402
+from blindspot.data.datasets import load_sanpo  # noqa: E402
+from blindspot.data.masks import load_obstacles  # noqa: E402
+from blindspot.data.sanpo import read_session_ids  # noqa: E402
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -31,10 +32,10 @@ def main(argv: list[str] | None = None) -> None:
     args = ap.parse_args(argv)
 
     annotations = {}
-    for s in load_samples(args.root, read_session_ids(args.split)):
-        session, _, index = s.frame_id.split("/")  # "<session>/camera_chest/<index>"
+    for s in load_sanpo(args.root, read_session_ids(args.split)):
+        index = int(s.frame_id.rsplit("/", 1)[1])  # "<session>/camera_chest/<index>"
         obstacles = load_obstacles(
-            args.root / session, int(index), s.rgb.shape[:2], min_area_px=args.min_area
+            args.root / s.tags["session"], index, s.rgb.shape[:2], min_area_px=args.min_area
         )
         if obstacles is not None:
             annotations[s.frame_id] = [asdict(o) for o in obstacles]
