@@ -60,6 +60,8 @@ class Sample:
         depth: Reference depth in meters, float32, shape (H, W), NaN where invalid.
         intrinsics: Camera parameters matching the resolution of ``rgb``.
         obstacles: Annotation; ``None`` means "not annotated", an empty list means "no obstacle".
+        tags: Grouping labels for reports, e.g. ``{"dataset": "iphone", "env": "out", "scene": "sidewalk"}``.
+            Multiple values of one tag are joined with "-" (e.g. ``"obstacles": "bollard-bike"``).
     """
 
     frame_id: str
@@ -67,3 +69,4 @@ class Sample:
     depth: np.ndarray
     intrinsics: Intrinsics
     obstacles: Optional[list[Obstacle]] = field(default=None)
+    tags: dict[str, str] = field(default_factory=dict)
