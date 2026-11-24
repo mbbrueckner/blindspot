@@ -221,12 +221,30 @@ _register(
     hub_model="metric3d_vit_large",
 )
 
+# ---- Baselines ----
+_register(
+    ModelInfo(
+        "constant",
+        "Constant 4 m",
+        "Baseline",
+        "metric",
+        False,
+        "none",
+        install="none",
+        notes="lower bound for every metric: the same depth everywhere, so it never alerts within 3 m",
+    ),
+    "blindspot.models.constant:ConstantDepth",
+    depth_m=4.0,
+)
+
 TIER1 = ("midas_s", "da2_s", "da2m_in_s", "da2m_out_s", "m3d_s", "yolo26n", "zipdepth")
+BASELINES = ("constant",)
 TIER2 = ("moge2_s", "unidepth2_s", "depthpro", "da3m_l", "da3_s", "zoedepth", "m3d_l")
 
 GROUPS: dict[str, tuple[str, ...]] = {
     "tier1": TIER1,
     "tier2": TIER2,
+    "baseline": BASELINES,
     # small enough to be candidates for the phone (< 30 M parameters)
     "mobile": ("midas_s", "yolo26n", "zipdepth", "da2_s", "da2m_in_s", "da2m_out_s"),
     # use the focal length we pass in
@@ -237,7 +255,7 @@ GROUPS: dict[str, tuple[str, ...]] = {
     "relative": tuple(n for n, (i, _, _) in _SPECS.items() if i.kind == "relative"),
     # runnable in the project environment (no separate env)
     "main": tuple(n for n, (i, _, _) in _SPECS.items() if i.env == "main"),
-    "all": TIER1 + TIER2,
+    "all": TIER1 + TIER2 + BASELINES,
 }
 
 

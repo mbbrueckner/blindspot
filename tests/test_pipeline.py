@@ -188,3 +188,37 @@ def test_pipeline_figures(tmp_path):
         assert {f"iphone_{stem}.png", f"iphone_{stem}.pdf"} <= names, stem
     md = (out / "report.md").read_text()
     assert "![iphone: Accuracy vs. speed" in md and "figures/iphone_conditions.png" in md
+
+
+def test_pipeline_constant_baseline_with_sanpo_split_and_annotations(tmp_path):
+    for sid in ("s1", "s2"):
+        write_sanpo_session(tmp_path / "sanpo", sid, depth_value=2.5)
+    split = tmp_path / "test.txt"
+    split.write_text("s2\n")  # s1 is downloaded but not in the split
+    ann = tmp_path / "ann.json"
+    wall = {"box": [1, 1, 7, 5], "label": "wall", "in_path": True}  # 2.5 m, inside the 3 m range
+    ann.write_text(json.dumps({"s2/camera_chest/000000": [wall]}))
+    kwargs = dict(
+        run_name="c",
+        models="baseline",
+        datasets=("sanpo",),
+        sanpo_root=tmp_path / "sanpo",
+        sanpo_split=split,
+        annotations=[ann],
+        results_root=tmp_path / "results",
+        cache_root=tmp_path / "results" / "cache",
+        warmup=0,
+        figures=False,
+    )
+    data = json.loads((run(make_config("smoke", **kwargs), log=lambda m: None) / "report.json").read_text())
+    assert data["data"]["sanpo"]["sessions"] == ["s2"] and data["data"]["annotated_frames"] == 1
+    row = next(r for r in data["summary"] if r["model"] == "constant" and r["range"] == "2-5")
+    assert row["alignment"] == "raw"  # frames are 2.5 m and 3.5 m deep
+    assert row["abs_rel"] == pytest.approx((1.5 / 2.5 + 0.5 / 3.5) / 2)
+    warn = [r for r in data["warnings"] if r["model"] == "constant"]
+    assert warn and all(r["n_positive"] == 1 and r["recall"] == 0.0 for r in warn)  # never alerts
+
+    wall["box"] = [1, 1, 9, 5]  # wider than the 8 px image
+    ann.write_text(json.dumps({"s2/camera_chest/000000": [wall]}))
+    with pytest.raises(ValueError, match="outside"):
+        run(make_config("smoke", **{**kwargs, "run_name": "bad"}), log=lambda m: None)

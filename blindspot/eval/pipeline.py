@@ -17,7 +17,8 @@ from blindspot import device as dev
 from blindspot.alerts import ALERT_LOGICS, CorridorConfig
 from blindspot.core import Sample
 from blindspot.data import datasets
-from blindspot.data.annotations import load_annotations
+from blindspot.data.annotations import apply_annotations, load_annotations
+from blindspot.data.sanpo import read_session_ids
 from blindspot.eval import report as rep
 from blindspot.eval import scoring
 from blindspot.eval.alignment import ALIGNMENTS
@@ -35,7 +36,8 @@ class RunConfig:
         models: Comma-separated model and group names, see :func:`blindspot.models.registry.resolve`.
         datasets: "sanpo" and/or "iphone".
         sanpo_root: Folder with the SANPO sessions.
-        sanpo_sessions: Session IDs; ``None`` uses ``test_sessions.txt`` (or all).
+        sanpo_sessions: Session IDs; ``None`` uses ``sanpo_split``, else ``test_sessions.txt`` (or all).
+        sanpo_split: Split file (one session ID per line), e.g. ``planning/splits/sanpo_real_test.txt``.
         sanpo_stride: Every n-th downloaded SANPO frame.
         sanpo_max_frames: Limit of SANPO frames.
         iphone_root: Folder with the iPhone recordings.
@@ -62,6 +64,7 @@ class RunConfig:
     datasets: tuple[str, ...] = ("sanpo", "iphone")
     sanpo_root: Path = Path("data/sanpo/real")
     sanpo_sessions: Optional[list[str]] = None
+    sanpo_split: Optional[Path] = None
     sanpo_stride: int = 1
     sanpo_max_frames: Optional[int] = None
     iphone_root: Path = Path("data/iPhone")
@@ -135,9 +138,10 @@ def load_samples(cfg: RunConfig, log: Callable[[str], None]) -> tuple[list[Sampl
     info: dict = {}
     if "sanpo" in cfg.datasets:
         try:
-            s = datasets.load_sanpo(
-                cfg.sanpo_root, cfg.sanpo_sessions, cfg.sanpo_stride, cfg.sanpo_max_frames
-            )
+            sessions = cfg.sanpo_sessions
+            if sessions is None and cfg.sanpo_split is not None:
+                sessions = read_session_ids(cfg.sanpo_split)
+            s = datasets.load_sanpo(cfg.sanpo_root, sessions, cfg.sanpo_stride, cfg.sanpo_max_frames)
             samples += s
             info["sanpo"] = {"frames": len(s), "sessions": sorted({x.tags["session"] for x in s})}
         except (FileNotFoundError, ValueError) as e:
@@ -167,11 +171,7 @@ def load_samples(cfg: RunConfig, log: Callable[[str], None]) -> tuple[list[Sampl
             log(f"iPhone recordings skipped: {e}")
     n_annotated = 0
     for path in cfg.annotations:
-        ann = load_annotations(str(path))
-        for s in samples:
-            if s.frame_id in ann:
-                s.obstacles = ann[s.frame_id]
-                n_annotated += 1
+        n_annotated += apply_annotations(samples, load_annotations(str(path)))
     info["annotated_frames"] = n_annotated
     return samples, info
 

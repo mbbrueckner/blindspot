@@ -14,8 +14,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from blindspot.sanpo import read_session_ids  # noqa: E402
-from blindspot.splits import make_splits, write_splits  # noqa: E402
+from blindspot.data.sanpo import read_session_ids  # noqa: E402
+from blindspot.data.splits import make_splits, write_splits  # noqa: E402
 
 
 def main(argv: list[str] | None = None) -> None:
