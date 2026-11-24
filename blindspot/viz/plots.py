@@ -297,7 +297,7 @@ def near_range(summary, infos: dict, dataset: str, stem: Path, min_share: float 
 
 
 def error_over_distance(
-    curves, infos: dict, dataset: str, highlight: Sequence[str], stem: Path, warn_range_m: float = 3.0
+    curves, infos: dict, dataset: str, highlight: Sequence[str], stem: Path, warn_range_m: float = 5.0
 ) -> bool:
     """AbsRel over the true distance (0.5 m bins, one scale factor per frame) for a few chosen models."""
     chosen = [
