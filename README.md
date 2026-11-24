@@ -23,7 +23,7 @@ blindspot/
     base.py            common interface DepthModel.predict(rgb, intrinsics) -> depth
     registry.py        short names, groups (tier1, mobile, camera, ...), lazy construction
     midas.py, hf.py (Depth Anything V2, ZoeDepth, Depth Pro), metric3d.py, yolo.py, zipdepth.py,
-    moge.py, unidepth.py, da3.py, constant.py (constant 4 m lower bound)
+    moge.py, unidepth.py, da3.py, constant.py (constant 6 m lower bound)
   alerts/            alert logic (WP 3.1)
     corridor.py        walking corridor in 3D and alerts per image third
     naive.py           naive baseline without corridor
@@ -144,7 +144,7 @@ uv run python scripts/run_eval.py --preset full --run-name m1_full
 
 # Variants
 uv run python scripts/run_eval.py --preset full --models mobile,m3d_s --datasets iphone --device cpu
-uv run python scripts/run_eval.py --preset smoke --models baseline        # constant 4 m lower bound
+uv run python scripts/run_eval.py --preset smoke --models baseline        # constant 6 m lower bound
 uv run python scripts/run_eval.py --list-models
 ```
 
