@@ -13,7 +13,7 @@ import cv2
 import numpy as np
 
 from blindspot.core import Obstacle
-from blindspot.sanpo import CHEST
+from blindspot.data.sanpo import CHEST
 
 # SANPO class ID -> label for classes with instance IDs (one rectangle per instance). Ground, sky and
 # vegetation are not boxed obstacles. Revisit with the group if the definition should change.
