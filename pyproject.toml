@@ -11,7 +11,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# Pretrained depth models (WP 2.1). GitHub-only model packages are documented in docs/modelle.md.
+# Pretrained depth models (WP 2.1). GitHub-only model packages are documented in docs/models.md.
 models = [
     "huggingface-hub>=0.30",
     "mmengine>=0.10",
@@ -23,7 +23,7 @@ models = [
     "ultralytics>=8.4",
 ]
 # Models only available on GitHub that install cleanly into the main environment (pinned commits).
-# MoGe, UniDepth and Depth Anything 3 need separate environments, see docs/modelle.md.
+# MoGe, UniDepth and Depth Anything 3 need separate environments, see docs/models.md.
 github = ["zipdepth @ git+https://github.com/fabiotosi92/ZipDepth@91f3fd21e131641f51e8d35736d1958350180e3a"]
 # Figures and HTML report.
 viz = ["matplotlib>=3.9"]
