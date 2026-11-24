@@ -36,6 +36,7 @@ def main(argv: list[str] | None = None) -> None:
     ap.add_argument("--datasets", help="comma-separated: sanpo, iphone")
     ap.add_argument("--device", choices=DEVICES)
     ap.add_argument("--sanpo-root", type=Path)
+    ap.add_argument("--sanpo-split", type=Path, help="SANPO split file, one session ID per line")
     ap.add_argument("--sanpo-max-frames", type=int)
     ap.add_argument("--iphone-root", type=Path)
     ap.add_argument(
@@ -81,6 +82,7 @@ def main(argv: list[str] | None = None) -> None:
         datasets=tuple(args.datasets.split(",")) if args.datasets else None,
         device=args.device,
         sanpo_root=args.sanpo_root,
+        sanpo_split=args.sanpo_split,
         sanpo_max_frames=args.sanpo_max_frames,
         iphone_root=args.iphone_root,
         iphone_recordings=args.recordings.split(",") if args.recordings else None,

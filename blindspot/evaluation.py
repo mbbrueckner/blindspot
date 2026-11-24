@@ -5,7 +5,7 @@ should import from :mod:`blindspot.eval.metrics`, :mod:`blindspot.eval.runner` a
 :mod:`blindspot.data.annotations`.
 """
 
-from blindspot.data.annotations import load_annotations
+from blindspot.data.annotations import apply_annotations, load_annotations
 from blindspot.eval.metrics import (
     _frame_truth,
     depth_metrics,
@@ -19,6 +19,7 @@ from blindspot.eval.runner import Variant, evaluate_variant
 __all__ = [
     "Variant",
     "_frame_truth",
+    "apply_annotations",
     "depth_metrics",
     "direction_of_box",
     "evaluate_variant",

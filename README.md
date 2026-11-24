@@ -135,7 +135,9 @@ uv run python scripts/run_eval.py --preset full --run-name m1_full
 
 # Variants
 uv run python scripts/run_eval.py --preset full --models mobile,m3d_s --datasets iphone --device cpu
-uv run python scripts/run_eval.py --preset full --annotations planning/annotations/sanpo_real_test.json
+uv run python scripts/run_eval.py --preset full --datasets sanpo --sanpo-split planning/splits/sanpo_real_test.txt \
+    --annotations planning/annotations/sanpo_real_test.json
+uv run python scripts/run_eval.py --preset smoke --models baseline        # constant 4 m lower bound
 uv run python scripts/run_eval.py --list-models
 ```
 
