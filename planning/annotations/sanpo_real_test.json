@@ -38,7 +38,7 @@
     342
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -80,7 +80,7 @@
     384
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -90,7 +90,7 @@
     383
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -110,7 +110,7 @@
     382
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -120,7 +120,7 @@
     360
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -160,7 +160,7 @@
     360
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   }
  ],
  "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl/camera_chest/000024": [
@@ -172,7 +172,7 @@
     377
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -202,7 +202,7 @@
     333
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -222,7 +222,7 @@
     330
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -304,7 +304,7 @@
     394
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -314,7 +314,7 @@
     364
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -324,7 +324,7 @@
     360
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -344,7 +344,7 @@
     358
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -364,7 +364,7 @@
     376
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -414,7 +414,7 @@
     292
    ],
    "label": "barrier",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -456,7 +456,7 @@
     473
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -466,7 +466,7 @@
     443
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -476,7 +476,7 @@
     442
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -496,7 +496,7 @@
     439
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -516,7 +516,7 @@
     454
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -588,7 +588,7 @@
     397
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -618,7 +618,7 @@
     333
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -638,7 +638,7 @@
     344
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -720,7 +720,7 @@
     421
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -822,7 +822,7 @@
     402
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -924,7 +924,7 @@
     339
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -944,7 +944,7 @@
     370
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -954,7 +954,7 @@
     308
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1026,7 +1026,7 @@
     447
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1098,7 +1098,7 @@
     105
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1118,7 +1118,7 @@
     64
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1128,7 +1128,7 @@
     54
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1138,7 +1138,7 @@
     224
    ],
    "label": "pole",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1178,7 +1178,7 @@
     58
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1188,7 +1188,7 @@
     57
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1230,7 +1230,7 @@
     153
    ],
    "label": "obstacle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1260,7 +1260,7 @@
     155
    ],
    "label": "pole",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1280,7 +1280,7 @@
     214
    ],
    "label": "building",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1322,7 +1322,7 @@
     74
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1332,7 +1332,7 @@
     117
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1342,7 +1342,7 @@
     84
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1352,7 +1352,7 @@
     73
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1362,7 +1362,7 @@
     74
    ],
    "label": "traffic light",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1372,7 +1372,7 @@
     302
    ],
    "label": "pole",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1392,7 +1392,7 @@
     145
    ],
    "label": "pole",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1412,7 +1412,7 @@
     78
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1422,7 +1422,7 @@
     63
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1474,7 +1474,7 @@
     117
    ],
    "label": "obstacle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1484,7 +1484,7 @@
     183
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1494,7 +1494,7 @@
     138
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1524,7 +1524,7 @@
     123
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1534,7 +1534,7 @@
     132
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1544,7 +1544,7 @@
     149
    ],
    "label": "traffic light",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1584,7 +1584,7 @@
     121
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1594,7 +1594,7 @@
     96
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1634,7 +1634,7 @@
     517
    ],
    "label": "building",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1654,7 +1654,7 @@
     119
    ],
    "label": "building",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1696,7 +1696,7 @@
     63
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1706,7 +1706,7 @@
     14
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1788,7 +1788,7 @@
     57
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1798,7 +1798,7 @@
     48
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1808,7 +1808,7 @@
     42
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1818,7 +1818,7 @@
     48
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1828,7 +1828,7 @@
     46
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1838,7 +1838,7 @@
     73
    ],
    "label": "traffic light",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1878,7 +1878,7 @@
     48
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1950,7 +1950,7 @@
     127
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1960,7 +1960,7 @@
     183
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1970,7 +1970,7 @@
     142
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1980,7 +1980,7 @@
     133
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -1990,7 +1990,7 @@
     128
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2000,7 +2000,7 @@
     126
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2010,7 +2010,7 @@
     132
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2020,7 +2020,7 @@
     154
    ],
    "label": "traffic light",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2050,7 +2050,7 @@
     124
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2060,7 +2060,7 @@
     119
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2070,7 +2070,7 @@
     118
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2110,7 +2110,7 @@
     98
    ],
    "label": "building",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2142,7 +2142,7 @@
     62
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2152,7 +2152,7 @@
     24
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2162,7 +2162,7 @@
     16
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2214,7 +2214,7 @@
     18
    ],
    "label": "obstacle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2254,7 +2254,7 @@
     98
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2264,7 +2264,7 @@
     92
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2274,7 +2274,7 @@
     84
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2284,7 +2284,7 @@
     83
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2294,7 +2294,7 @@
     88
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2304,7 +2304,7 @@
     114
    ],
    "label": "traffic light",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2334,7 +2334,7 @@
     89
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2354,7 +2354,7 @@
     78
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2364,7 +2364,7 @@
     82
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2384,7 +2384,7 @@
     65
    ],
    "label": "building",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2394,7 +2394,7 @@
     113
    ],
    "label": "building",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2466,7 +2466,7 @@
     130
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2476,7 +2476,7 @@
     115
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2486,7 +2486,7 @@
     107
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2506,7 +2506,7 @@
     114
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2516,7 +2516,7 @@
     123
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2576,7 +2576,7 @@
     105
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2586,7 +2586,7 @@
     112
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2616,7 +2616,7 @@
     100
    ],
    "label": "building",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2626,7 +2626,7 @@
     142
    ],
    "label": "building",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2648,7 +2648,7 @@
     338
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2658,7 +2658,7 @@
     296
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2668,7 +2668,7 @@
     376
    ],
    "label": "obstacle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2678,7 +2678,7 @@
     379
    ],
    "label": "obstacle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2688,7 +2688,7 @@
     372
    ],
    "label": "obstacle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2698,7 +2698,7 @@
     328
    ],
    "label": "obstacle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2738,7 +2738,7 @@
     355
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2748,7 +2748,7 @@
     315
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2758,7 +2758,7 @@
     278
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2768,7 +2768,7 @@
     329
    ],
    "label": "pole",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2788,7 +2788,7 @@
     334
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2798,7 +2798,7 @@
     323
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2818,7 +2818,7 @@
     309
    ],
    "label": "building",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2838,7 +2838,7 @@
     488
    ],
    "label": "wall/fence",
-   "in_path": true
+   "in_path": false
   }
  ],
  "ddEl0JtxAC3nnXI00uzGQH9cqwAK_uOu/camera_chest/000012": [
@@ -2850,7 +2850,7 @@
     264
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -2860,7 +2860,7 @@
     222
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3040,7 +3040,7 @@
     242
    ],
    "label": "building",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3060,7 +3060,7 @@
     229
    ],
    "label": "building",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3092,7 +3092,7 @@
     293
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3262,7 +3262,7 @@
     272
    ],
    "label": "building",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3304,7 +3304,7 @@
     293
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3314,7 +3314,7 @@
     254
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3354,7 +3354,7 @@
     296
    ],
    "label": "obstacle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3364,7 +3364,7 @@
     281
    ],
    "label": "obstacle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3414,7 +3414,7 @@
     232
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3434,7 +3434,7 @@
     302
    ],
    "label": "pole",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3484,7 +3484,7 @@
     288
    ],
    "label": "building",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3516,7 +3516,7 @@
     262
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3526,7 +3526,7 @@
     234
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3576,7 +3576,7 @@
     257
    ],
    "label": "obstacle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3626,7 +3626,7 @@
     209
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3646,7 +3646,7 @@
     194
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3706,7 +3706,7 @@
     337
    ],
    "label": "wall/fence",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3728,7 +3728,7 @@
     294
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3738,7 +3738,7 @@
     249
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3838,7 +3838,7 @@
     253
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3848,7 +3848,7 @@
     239
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3920,7 +3920,7 @@
     309
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -3930,7 +3930,7 @@
     265
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -4122,7 +4122,7 @@
     314
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -4132,7 +4132,7 @@
     267
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -4304,7 +4304,7 @@
     300
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -4314,7 +4314,7 @@
     253
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -4384,7 +4384,7 @@
     231
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -4424,7 +4424,7 @@
     302
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -4474,7 +4474,7 @@
     337
    ],
    "label": "wall/fence",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -4496,7 +4496,7 @@
     274
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -4506,7 +4506,7 @@
     224
    ],
    "label": "pedestrian",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -4566,7 +4566,7 @@
     242
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -4576,7 +4576,7 @@
     206
    ],
    "label": "vehicle",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -4626,7 +4626,7 @@
     275
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -4666,7 +4666,7 @@
     319
    ],
    "label": "wall/fence",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -4698,7 +4698,7 @@
     288
    ],
    "label": "pole",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -4720,7 +4720,7 @@
     244
    ],
    "label": "pole",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -4742,7 +4742,7 @@
     189
    ],
    "label": "pole",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -4896,7 +4896,7 @@
     282
    ],
    "label": "pole",
-   "in_path": true
+   "in_path": false
   },
   {
    "box": [
@@ -4906,7 +4906,7 @@
     232
    ],
    "label": "tree",
-   "in_path": true
+   "in_path": false
   }
  ]
 }
