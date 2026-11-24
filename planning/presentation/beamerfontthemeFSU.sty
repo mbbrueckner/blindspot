@@ -1,0 +1,67 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerfontthemeFSU}[2019/04/28 v0.1 FSU theme]
+
+\DeclareOptionBeamer{condensed}{%
+  \def\beamerfsu@condensedfont{true}%
+  \PassOptionsToPackage{condensed}{roboto}}
+\ProcessOptionsBeamer
+
+\usefonttheme{professionalfonts}
+
+\RequirePackage{fontspec}
+\IfFileExists{Roboto.fontspec}{
+  \ifdef{\beamerfsu@condensedfont}{
+    \setmainfont{Roboto Condensed}
+    \setsansfont{Roboto Condensed}
+  }{
+    \setmainfont{Roboto}
+    \setsansfont{Roboto}
+  }
+}{
+  \RequirePackage[sfdefault]{roboto}
+}
+\IfFileExists{RobotoMono.fontspec}{
+  \setmonofont{Roboto Mono}
+}{
+  \RequirePackage{roboto-mono}
+}
+\RequirePackage{unicode-math}
+% TODO: use fontspec file
+% TODO: math versions are experimental and should not be considered a public feature
+% support for math versions will be improved in future versions of unicode-math
+\setmathfont{FiraMath-Regular}[Extension=.otf] % local change: TeX Live font, the theme's fonts/ submodule is Git LFS
+% \foreach \beamerfsu@firafile/\beamerfsu@firaversion in {Regular/regular, Medium/medium, SemiBold/semibold,
+%                                                         Bold/bold, ExtraBold/extrabold, Heavy/heavy,
+%                                                         Light/light, ExtraLight/extralight, UltraLight/ultralight,
+%                                                         Thin/thin}{%
+%   \setmathfont{FiraMath-\beamerfsu@firafile}[Path=./fonts/fira-math/,Extension=.otf,version=\beamerfsu@firaversion]
+% }
+\setmathrm{Roboto}
+\setmathsf{Roboto}
+\setmathtt{Roboto Mono}
+\setboldmathrm{Roboto Bold}
+
+\setbeamerfont{frametitle}{series=\bfseries,size=\LARGE}
+\setbeamerfont{framesubtitle}{series=\bfseries,size=\large}
+\setbeamerfont{standout}{size=\Huge}
+
+\setbeamerfont{title}{size=\Huge, series=\bfseries} 
+\setbeamerfont{subtitle}{size=\Large, series=\mdseries}
+\setbeamerfont{author}{size=\Large}
+\setbeamerfont{date}{size=\normalsize}
+\setbeamerfont{institute}{size=\normalsize}
+
+\def\TeX{T\kern-.1667em\lower.5ex\hbox{E}\kern-.08emX\@}
+\DeclareRobustCommand{\LaTeX}{L\kern-.3em%
+  {\sbox\z@ T%
+    \vbox to\ht\z@{\hbox{\check@mathfonts
+      \fontsize\sf@size\z@
+      \math@fontsfalse\selectfont
+      A}%
+    \vss}%
+  }%
+  \kern-.12em%
+  \TeX}
+\DeclareRobustCommand{\LaTeXe}{\mbox{\m@th
+  \if b\expandafter\@car\f@series\@nil\boldmath\fi
+  \LaTeX\kern.15em2$_{\textstyle\varepsilon}$}}

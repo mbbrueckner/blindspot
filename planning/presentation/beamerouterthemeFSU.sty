@@ -1,0 +1,62 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerouterthemeFSU}[2018/12/03 v0.1 FSU theme]
+
+\RequirePackage{beamerthemeFSUcommon}
+\RequirePackage{calc}
+
+\DeclareOptionBeamer{withnavigation}{\def\beamerfsu@withavigation{true}}
+\ProcessOptionsBeamer
+
+\newsavebox\beamerfsu@wortmarkebox
+\savebox\beamerfsu@wortmarkebox{\includegraphics[height=1.25cm]{img/wortmarke}}
+\newlength\beamerfsu@logoheight
+\setlength\beamerfsu@logoheight{\ht\beamerfsu@wortmarkebox+\dp\beamerfsu@wortmarkebox}
+\newlength\beamerfsu@frametitlewidth
+\setlength\beamerfsu@frametitlewidth{\textwidth-\wd\beamerfsu@wortmarkebox}
+\newlength\beamerfsu@marginoffset
+\setlength\beamerfsu@marginoffset{.5cm}
+
+\newlength\beamerfsu@logobbwidth
+\newlength\beamerfsu@logobbheight
+
+\mode<presentation>{
+  \setbeamersize{text margin left=\beamerfsu@marginoffset,text margin right=\beamerfsu@marginoffset}
+
+  \setbeamertemplate{headline}{%
+    \begin{tikzpicture}[overlay]
+      \node[inner sep=0pt,anchor=north east]
+        at ({\paperwidth-\beamerfsu@marginoffset}, -\beamerfsu@marginoffset) {%
+          \usebox\beamerfsu@wortmarkebox};
+    \end{tikzpicture}}
+
+  \setbeamertemplate{footline}{%
+    \vspace*{.2cm}% adjust the bottom margin to include the tikzpicture
+    \begin{tikzpicture}[overlay]
+      \fill[regenbogenband] (0, .4cm) rectangle (\paperwidth, .55cm);
+    \end{tikzpicture}%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=.4cm,dp=.2cm,rightskip=3.5ex]{footline}
+      {\usebeamerfont{section in head/foot}\hspace*{3.5ex}%
+        \insertshortauthor\ (\ifdefvoid{\insertinstitute}{}{\insertshortinstitute\ } FSU Jena)\ |\ {\insertshorttitle%
+          \ifdefvoid{\insertsubtitle}{}{\ --\ \insertshortsubtitle}}
+        {\hspace*{\fill}\insertframenumber}}
+    \end{beamercolorbox}}
+
+  \setbeamertemplate{frametitle}{%
+    % note that (0,0) is not frame corner, but corner of the text area
+    \begin{tikzpicture}[overlay]
+      \node[inner sep=0pt, font=\usebeamerfont{frametitle}, anchor=north west,
+          text width=\beamerfsu@frametitlewidth]
+        at (0,0) {\insertframetitle};
+      \node[inner sep=0pt, font=\usebeamerfont{framesubtitle}, anchor=south west,
+          text width=\beamerfsu@frametitlewidth]
+        at (0, -\beamerfsu@logoheight) {\insertframesubtitle};
+    \end{tikzpicture}%
+    \vspace*{\beamerfsu@logoheight}}
+
+  \ifcsundef{beamerfsu@withnavigation}{% insert navigation symbols
+    \beamertemplatenavigationsymbolsempty
+  }{%
+    \setbeamertemplate{navigation symbols}{\insertslidenavigationsymbol\insertframenavigationsymbol\insertsectionnavigationsymbol\insertdocnavigationsymbol}
+  }
+}
+\mode<all>

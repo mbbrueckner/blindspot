@@ -1,0 +1,162 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerinnerthemeFSU}[2023/01/31 v0.1 FSU theme]
+
+\RequirePackage{beamerthemeFSUcommon}
+\RequirePackage{xstring}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{skins}
+\usetikzlibrary{calc}
+
+\DeclareOptionBeamer{numberedsections}{\def\beamerfsu@numberedsections{true}}
+\DeclareOptionBeamer{swaptitles}{%
+  \def\beamerfsu@swaptitles{true}%
+  \let\beamerfsu@numberedsections\undefined}
+\ProcessOptionsBeamer
+
+\tcbset{
+  commonblock/.style={enhanced, frame hidden, sharp corners=all, titlerule=0pt, coltext=cdhausfarbe},
+  blockonframe/.style={left=.1cm,right=.1cm,toptitle=.1cm,bottomtitle=.1cm},
+  defaultblock/.style={commonblock,colbacktitle=beamer@standoutbg,blockonframe},
+  alertblock/.style={commonblock,colbacktitle=cdmedizin,coltitle=white,colback=cdmedizin!20,blockonframe},
+  exampleblock/.style={commonblock,colbacktitle=cdbiowiss,coltitle=white,colback=cdbiowiss!20,blockonframe}
+}
+
+\mode<presentation> {
+  \ifdef{\beamerfsu@numberedsections}{%
+    \setbeamertemplate{section in toc}[sections numbered]}{}
+  \setbeamertemplate{subsection in toc}{%
+    \small\hspace{1.2em}{%
+      \tiny\raise1.5pt\hbox{%
+        \begin{tikzpicture}
+          \fill [fill=fg] (0,0) circle (0.325\baselineskip);
+        \end{tikzpicture}}%
+    }~\inserttocsubsection\par
+  }
+
+  \setbeamertemplate{block begin}{%
+    \ifdefvoid{\insertblocktitle}{%
+      \begin{tcolorbox}[defaultblock,oversize=.05cm]
+    }{%
+      \begin{tcolorbox}[defaultblock,oversize=.05cm,title=\insertblocktitle]
+    }}
+  \setbeamertemplate{block end}{%
+    \end{tcolorbox}}
+  \setbeamertemplate{block alerted begin}{%
+    \ifdefvoid{\insertblocktitle}{%
+      \begin{tcolorbox}[alertblock,oversize=.05cm]
+    }{%
+      \begin{tcolorbox}[alertblock,oversize=.05cm,title=\insertblocktitle]
+    }}
+  \setbeamertemplate{block alerted end}{%
+    \end{tcolorbox}}
+  \setbeamertemplate{block example begin}{%
+    \ifdefvoid{\insertblocktitle}{%
+      \begin{tcolorbox}[exampleblock,oversize=.05cm]
+    }{%
+      \begin{tcolorbox}[exampleblock,oversize=.05cm,title=\insertblocktitle]
+    }}
+  \setbeamertemplate{block example end}{%
+    \end{tcolorbox}}
+
+  \setbeamertemplate{itemize items}{%
+    \tiny\raise1.5pt\hbox{%
+      \begin{tikzpicture}
+        \fill [fill=fg] (0,0) circle (0.325\baselineskip);
+      \end{tikzpicture}}}
+  \setbeamertemplate{itemize subitem}{%
+    \tiny\raise1pt\hbox{%
+      \begin{tikzpicture}
+        \draw (2,2) circle (0.325\baselineskip);
+      \end{tikzpicture}}}
+  \settowidth{\leftmargini}{\usebeamertemplate{itemize item}}
+  \addtolength{\leftmargini}{\labelsep}
+  
+  % title page  
+  \setbeamertemplate{title page} {
+    \begin{tikzpicture}[overlay,remember picture]
+      % further measurements:
+      % * authoroffset 2.5/14.5 (anchor: south west, from page.south west)
+      % * subtitleoffset 5/14.5 (anchor: north west, from page.south west)
+      % * dateoffset 6.25/14.5 (anchor: north west, from page.south west)
+      % * titleoffset 9.5/14.5 (anchor: north west, from page.south west)
+      \pgfmathsetlengthmacro\beamerfsu@titlepageregenbogenoffset{4/14.5*\paperheight}
+      \pgfmathsetlengthmacro\beamerfsu@titlepagelogoheight{2.8/14.5*\paperheight}
+      \pgfmathsetlengthmacro\beamerfsu@titlepagelogooffset{.5/14.5*\paperheight}
+      \pgfmathsetlengthmacro\beamerfsu@titlepageleftoffset{.75/14.5*\paperheight}
+      \pgfmathsetlengthmacro\beamerfsu@titlepagehanfriedwidth{11/14.5*\paperheight}
+      \pgfmathsetlengthmacro\beamerfsu@titlepagehanfriedoffset{2/14.5*\paperheight}
+      \fill[regenbogenband]
+        ([yshift=-\beamerfsu@titlepageregenbogenoffset]current page.north west) rectangle 
+        ([yshift=-\beamerfsu@titlepageregenbogenoffset-.2cm]current page.north east);
+      \node[inner sep=0pt,anchor=north east] (tplogo)
+        at ([xshift=-\beamerfsu@titlepagelogooffset,yshift=-\beamerfsu@titlepagelogooffset]current page.north east)
+        {\includegraphics[height=\beamerfsu@titlepagelogoheight]{img/wortmarke}};
+      \node[inner sep=0pt,anchor=south east] (tphanfried)
+        at ([xshift=\beamerfsu@titlepagehanfriedoffset,yshift=-\beamerfsu@titlepagehanfriedoffset]current page.south east)
+        {\includegraphics[decodearray={0 0.3 0 0.3 0 0.3},width=\beamerfsu@titlepagehanfriedwidth]{img/hanfried-ozahl}};
+      \node[inner sep=0pt,anchor=north west,font=\usebeamerfont{title},
+          text width=\paperwidth-\beamerfsu@titlepagehanfriedwidth] (tptitle)
+        at ([xshift=\beamerfsu@titlepageleftoffset]$(current page.south west)!19/29!(current page.north west)$)
+        {\inserttitle};
+      \node[inner sep=0pt,anchor=north west,font=\usebeamerfont{subtitle},
+          text width=\paperwidth-\beamerfsu@titlepagehanfriedwidth] (tpsubtitle)
+        at ($(tptitle.south west)!7/19!(tptitle.west |- current page.south west)$)
+        {\insertsubtitle};
+      \node[inner sep=0pt,anchor=west,font=\usebeamerfont{date},
+          text width=\paperwidth-\beamerfsu@titlepagehanfriedwidth] (tpdate)
+        at ($(tpsubtitle.north west)!5/18!(tptitle.south west)$)
+        {\insertdate};
+      \node[inner sep=0pt,anchor=south west,font=\usebeamerfont{institute},
+          text width=\paperwidth-\beamerfsu@titlepagehanfriedwidth] (tpinstitute)
+        at ([xshift=\beamerfsu@titlepageleftoffset,yshift=\beamerfsu@titlepagelogooffset]current page.south west)
+        {\insertinstitute};
+      \node[inner sep=0pt,anchor=west,font=\usebeamerfont{author},
+          text width=\paperwidth-\beamerfsu@titlepagehanfriedwidth] (tpauthor)
+        at ($(tpinstitute.north west)!.5!(tpsubtitle.south west)$)
+        {\insertauthor};
+    \end{tikzpicture}
+  }
+
+  % public "private" commands are needed as catcodes are a problem for verbatim slides
+  \newcommand*\beamerfsunumberedsection{\ifdef{\beamerfsu@numberedsections}{\thesection.~}{}\insertsection}
+  \newcommand*\beamerfsunumberedsubsection{\ifdef{\beamerfsu@numberedsections}{\thesection.~}{}\insertsubsection}
+  \newcommand*\beamerfsuframetitle{\ifdef{\beamerfsu@swaptitles}{%
+    \ifdefvoid{\insertsubsection}{\insertsection}{\insertsubsection}}{%
+      \beamerfsunumberedsection}}
+  \newcommand*\beamerfsuframesubtitle{\ifdef{\beamerfsu@swaptitles}{\insertsection}{\beamerfsunumberedsubsection}}
+  \newenvironment{sframe}[1][]{% new environment: frame with auto frametitle
+    \expanded{\noexpand\begin{frame}\ifblank{#1}{}{[#1,environment=sframe]}}
+      \frametitle{\beamerfsuframetitle}%
+      \ifdefvoid{\insertsubsection}{}{%
+        \framesubtitle{\beamerfsuframesubtitle}}%
+  }{\end{frame}}
+
+  \newcommand{\tocframe}{% output a toc
+    \begin{frame}{Gliederung}\tableofcontents\end{frame}
+  }
+  \newcommand{\tocpsframe}{% output a toc for current section
+    \begin{frame}{Gliederung}%
+      \tableofcontents[currentsection,sectionstyle=show/shaded,subsectionstyle=show/show/hide]%
+    \end{frame}%
+  }
+  
+  \NewDocumentEnvironment{standoutframe}{+b}{%
+    \begingroup
+    % use background canvas to not start overlaying within text boundaries
+    \setbeamertemplate{background canvas}{%
+      \begin{tikzpicture}[overlay]
+        \fill[fill=beamer@standoutbg] (0,0) rectangle (\paperwidth,-\paperheight);
+        \node[inner sep=0pt, font=\usebeamerfont{standout}, text=beamer@standoutfg]
+          at (.5\paperwidth, -.5\paperheight) {\parbox{.9\textwidth}{\centering #1}};
+      \end{tikzpicture}}
+    \begin{frame}[plain]
+    \end{frame}
+    \endgroup
+  }
+
+  \setbeamertemplate{bibliography item}[text]
+  
+  \counterwithin*{equation}{section}
+  \counterwithin*{equation}{subsection}
+}
+\mode<all>
