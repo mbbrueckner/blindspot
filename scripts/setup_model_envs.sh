@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Creates the separate environments for models whose dependencies conflict with the main environment
-# (docs/modelle.md). Each env gets torch, the blindspot core package and the model package installed
+# (docs/models.md). Each env gets torch, the blindspot core package and the model package installed
 # with --no-deps plus only the modules its inference code imports, all pinned to tested commits.
 #
 # Usage: bash scripts/setup_model_envs.sh [moge] [unidepth] [da3]   (no argument: all three)

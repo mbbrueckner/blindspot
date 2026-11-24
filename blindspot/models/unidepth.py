@@ -1,6 +1,6 @@
 """UniDepthV2 (metric depth, uses the camera intrinsics). Runs in a separate env.
 
-Install: see docs/modelle.md (``unidepth`` environment; UniDepth pins torch and needs xformers).
+Install: see docs/models.md (``unidepth`` environment; UniDepth pins torch and needs xformers).
 """
 
 import numpy as np
