@@ -218,5 +218,16 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
-data/
-results/
+/data/
+/results/
+
+# Separate environments for models with conflicting dependencies (docs/models.md)
+/envs/
+
+# LaTeX build files (the PDFs next to the .tex files are kept)
+*.aux
+*.fdb_latexmk
+*.fls
+*.out
+*.synctex.gz
+*.toc
