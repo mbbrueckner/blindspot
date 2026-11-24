@@ -165,3 +165,54 @@ def latency_stats(seconds: Sequence[float]) -> dict:
         "p95_ms": float(np.percentile(arr, 95) * 1000),
         "fps": float(1 / arr.mean()),
     }
+
+
+# Depth ranges in meters, (lower, upper]; alerts happen within about 3 m, so the near range is separate.
+DEPTH_RANGES = {"0-2": (0.0, 2.0), "2-5": (2.0, 5.0), "5-10": (5.0, 10.0), "all": (0.0, 10.0)}
+
+
+def range_metrics(pred: np.ndarray, gt: np.ndarray, ranges: Optional[dict] = None) -> dict[str, dict]:
+    """Computes :func:`depth_metrics` separately per reference depth range.
+
+    A whole-image mean hides near-range errors, because most pixels are far away.
+
+    Args:
+        pred: Predicted depth in meters, shape (H, W).
+        gt: Reference depth in meters, shape (H, W); NaN or <= 0 is invalid.
+        ranges: Dict name -> (lower, upper] in meters; default :data:`DEPTH_RANGES`.
+
+    Returns:
+        Dict range name -> metrics dict (NaN values and ``n_pixels`` 0 for empty ranges).
+    """
+    out = {}
+    for name, (lo, hi) in (ranges or DEPTH_RANGES).items():
+        with np.errstate(invalid="ignore"):
+            gt_r = np.where(gt > lo, gt, np.nan)
+        out[name] = depth_metrics(pred, gt_r, max_depth=hi)
+    return out
+
+
+def binned_abs_rel(
+    pred: np.ndarray, gt: np.ndarray, bin_m: float = 0.5, max_depth: float = 10.0
+) -> tuple[np.ndarray, np.ndarray]:
+    """Sums of the per-pixel AbsRel and pixel counts, binned by reference depth.
+
+    Returning sums and counts (instead of means) lets callers pool several images exactly.
+
+    Args:
+        pred: Predicted depth in meters, shape (H, W).
+        gt: Reference depth in meters, shape (H, W).
+        bin_m: Bin width in meters; bins are [0, bin_m), [bin_m, 2 bin_m), ... up to ``max_depth``.
+        max_depth: Upper end of the last bin.
+
+    Returns:
+        (sum of AbsRel per bin, pixel count per bin), both of length ``ceil(max_depth / bin_m)``.
+    """
+    n_bins = int(np.ceil(max_depth / bin_m))
+    with np.errstate(invalid="ignore"):
+        valid = np.isfinite(gt) & (gt > 0) & (gt <= max_depth) & np.isfinite(pred) & (pred > 0)
+    g, p = gt[valid].astype(np.float64), pred[valid].astype(np.float64)
+    idx = np.minimum((g / bin_m).astype(int), n_bins - 1)
+    sums = np.bincount(idx, weights=np.abs(p - g) / g, minlength=n_bins)
+    counts = np.bincount(idx, minlength=n_bins)
+    return sums, counts

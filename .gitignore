@@ -220,3 +220,6 @@ __marimo__/
 .streamlit/secrets.toml
 /data/
 /results/
+
+# Separate environments for models with conflicting dependencies (docs/modelle.md)
+/envs/

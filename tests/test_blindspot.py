@@ -92,7 +92,7 @@ def test_latency_stats():
 
 def test_evaluate_variant_end_to_end():
     sample = make_sample([Obstacle((0, 0, 10, 10), "pole", True)])
-    result = evaluation.evaluate_variant(lambda rgb: (sample.depth, [Alert("left", 2.0)]), [sample])
+    result = evaluation.evaluate_variant(lambda rgb, k: (sample.depth, [Alert("left", 2.0)]), [sample])
     assert result["n_frames"] == 1
     assert result["depth"]["abs_rel"] == 0
     assert result["warnings"]["recall"] == 1 and result["warnings"]["direction_accuracy"] == 1
