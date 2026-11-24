@@ -1,5 +1,6 @@
 """Writes the obstacle annotation JSON for a split from SANPO segmentation masks (WP 1.4).
 
+``in_path`` comes from the 3D corridor of WP 3.1 applied to the reference depth (no range limit).
 Frames without a mask are left out, so they count as "not annotated". Example::
 
     python scripts/make_annotations.py --root data/sanpo/real --split planning/splits/sanpo_real_test.txt \
@@ -29,13 +30,19 @@ def main(argv: list[str] | None = None) -> None:
     ap.add_argument("--split", type=Path, required=True, help="split file, one session ID per line")
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--min-area", type=int, default=400, help="smallest instance in mask pixels")
+    ap.add_argument("--min-corridor", type=int, default=100, help="corridor pixels needed for in_path")
     args = ap.parse_args(argv)
 
     annotations = {}
     for s in load_sanpo(args.root, read_session_ids(args.split)):
         index = int(s.frame_id.rsplit("/", 1)[1])  # "<session>/camera_chest/<index>"
         obstacles = load_obstacles(
-            args.root / s.tags["session"], index, s.rgb.shape[:2], min_area_px=args.min_area
+            args.root / s.tags["session"],
+            index,
+            s.depth,
+            s.intrinsics,
+            min_area_px=args.min_area,
+            min_corridor_px=args.min_corridor,
         )
         if obstacles is not None:
             annotations[s.frame_id] = [asdict(o) for o in obstacles]

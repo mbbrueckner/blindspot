@@ -3,13 +3,16 @@
 import gzip
 import importlib.util
 import json
+import math
 import pathlib
+from dataclasses import replace
 
 import cv2
 import numpy as np
 import pytest
 
 from blindspot import calibration, evaluation, sanpo, splits
+from blindspot.alerts.corridor import CorridorConfig, obstacle_mask
 from blindspot.core import Alert, Intrinsics, Obstacle, Sample
 from blindspot.data import masks
 
@@ -278,33 +281,61 @@ def make_mask(h=40, w=60):
     return m
 
 
+def make_corridor(h=40, w=60):
+    """Corridor pixels in the central third only."""
+    c = np.zeros((h, w), bool)
+    c[:, 20:40] = True
+    return c
+
+
 def test_obstacles_from_mask_instances_labels_and_in_path():
-    obs = masks.obstacles_from_mask(make_mask(), (40, 60), min_area_px=10)
+    obs = masks.obstacles_from_mask(make_mask(), make_corridor(), min_area_px=10, min_corridor_px=10)
     got = sorted((o.label, o.box, o.in_path) for o in obs)
     assert got == [
         ("pole", (28, 0, 32, 30), True),
-        ("tree", (2, 0, 10, 20), False),  # left of the central third (20 to 40)
+        ("tree", (2, 0, 10, 20), False),  # outside the corridor
         ("tree", (50, 0, 58, 20), False),
     ]
 
 
 def test_obstacles_from_mask_resizes_to_target():
-    obs = masks.obstacles_from_mask(make_mask(), (20, 30), min_area_px=1)
+    obs = masks.obstacles_from_mask(make_mask(), make_corridor(20, 30), min_area_px=1, min_corridor_px=1)
     assert any(o.label == "pole" and o.box == (14, 0, 16, 15) for o in obs)
 
 
-def test_in_path_overlaps_central_third():
-    assert masks.in_path((10, 0, 21, 5), 60) and masks.in_path((39, 0, 50, 5), 60)
-    assert not masks.in_path((0, 0, 20, 5), 60) and not masks.in_path((40, 0, 60, 5), 60)
+def test_in_path_counts_only_own_pixels_not_the_box():
+    m = np.zeros((40, 60, 3), np.uint8)
+    m[:, :, 0] = 3
+    m[0:30, 28:32] = (24, 0, 1)
+    c = np.zeros((40, 60), bool)
+    c[0:5, 28:32] = True  # 20 corridor pixels on the pole
+    assert masks.obstacles_from_mask(m, c, min_area_px=10, min_corridor_px=20)[0].in_path
+    assert not masks.obstacles_from_mask(m, c, min_area_px=10, min_corridor_px=21)[0].in_path
+
+
+def test_wall_along_the_walkway_is_not_in_path():
+    k = Intrinsics(100.0, 100.0, 30.0, 20.0)
+    depth = np.full((40, 60), np.nan, np.float32)
+    depth[:, 0:10] = 2.0  # wall to the left: x = (5 - 30) / 100 * 2 = -0.5 m
+    depth[:, 25:35] = 8.0  # object ahead, beyond any warning range
+    m = np.zeros((40, 60, 3), np.uint8)
+    m[:, 0:10, 0] = 8
+    m[:, 25:35, 0] = 7
+    cfg = CorridorConfig(camera_height_m=2.0, min_height_m=0.0)
+    corridor = obstacle_mask(depth, k, replace(cfg, warn_range_m=math.inf))
+    got = {o.label: o.in_path for o in masks.obstacles_from_mask(m, corridor, min_area_px=10)}
+    assert got == {"wall/fence": False, "building": True}
 
 
 def test_load_obstacles_missing_mask_is_none(tmp_path):
     sid = write_session(tmp_path)
-    assert masks.load_obstacles(sid, 3, (3, 4)) is None
+    depth, k = np.full((3, 4), 2.0, np.float32), Intrinsics(10.0, 10.0, 2.0, 1.5)
+    assert masks.load_obstacles(sid, 3, depth, k) is None
     d = sid / "camera_chest" / "left" / "segmentation_masks"
     d.mkdir()
     cv2.imwrite(str(d / "000003.png"), cv2.cvtColor(make_mask(), cv2.COLOR_RGB2BGR))
-    assert len(masks.load_obstacles(sid, 3, (40, 60), min_area_px=10)) == 3
+    depth, k = np.full((40, 60), 2.0, np.float32), Intrinsics(100.0, 100.0, 30.0, 20.0)
+    assert len(masks.load_obstacles(sid, 3, depth, k, min_area_px=10)) == 3
 
 
 def test_make_annotations_script_roundtrip(tmp_path):
@@ -317,7 +348,19 @@ def test_make_annotations_script_roundtrip(tmp_path):
     split = tmp_path / "s.txt"
     split.write_text("sess\n")
     out = tmp_path / "ann.json"
-    run_script("make_annotations", "--root", tmp_path, "--split", split, "--out", out, "--min-area", 1)
+    run_script(
+        "make_annotations",
+        "--root",
+        tmp_path,
+        "--split",
+        split,
+        "--out",
+        out,
+        "--min-area",
+        1,
+        "--min-corridor",
+        1,
+    )
     ann = evaluation.load_annotations(str(out))
     assert ann == {
         "sess/camera_chest/000003": [Obstacle((2, 0, 3, 3), "pole", True)]
@@ -364,9 +407,13 @@ def test_obstacles_from_mask_semantic_regions_need_larger_area():
     m[0:20, 0:30] = (7, 0, 0)  # building, 600 px
     m[30:34, 40:44] = (8, 0, 0)  # wall patch, 16 px
     m[0:3, 50:55] = (23, 0, 1)  # traffic light, 15 px, an instance class
-    got = sorted((o.label, o.box, o.in_path) for o in masks.obstacles_from_mask(m, (40, 60), min_area_px=10))
+    got = sorted(
+        (o.label, o.box, o.in_path) for o in masks.obstacles_from_mask(m, make_corridor(), min_area_px=10)
+    )
     assert got == [("building", (0, 0, 30, 20), True), ("traffic light", (50, 0, 55, 3), False)]
     # two separate building regions become two obstacles
     m[0:20, 30:60] = 0
     m[0:20, 40:60] = (7, 0, 0)
-    assert [o.box for o in masks.obstacles_from_mask(m, (40, 60), min_area_px=10)].count((40, 0, 60, 20)) == 1
+    assert [o.box for o in masks.obstacles_from_mask(m, make_corridor(), min_area_px=10)].count(
+        (40, 0, 60, 20)
+    ) == 1
