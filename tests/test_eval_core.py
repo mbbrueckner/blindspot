@@ -1,9 +1,11 @@
-"""Alignment, per-range metrics, cache, device helpers and the model registry."""
+"""Alignment, per-range metrics, cache, alerts, device helpers and the model registry."""
 
 import numpy as np
 import pytest
 
 from blindspot import device
+from blindspot.alerts import CorridorConfig, corridor_alerts, naive_alerts
+from blindspot.core import Intrinsics
 from blindspot.eval import alignment, metrics
 from blindspot.eval.cache import PredictionCache
 from blindspot.models import registry
@@ -83,6 +85,47 @@ def test_cache_roundtrip_float16_and_staleness(tmp_path):
     assert cache.invalidate_if_stale("m", {"v": 2}) and not cache.has("m", "rec/000001")
     with pytest.raises(ValueError):
         cache.path("m", "../escape")
+
+
+# ---- Alerts ----
+
+K = Intrinsics(50.0, 50.0, 50.0, 40.0)  # 100 x 80 image, wide angle: the floor reaches 1.7 m
+
+
+def ground_depth(cfg, h=80, w=100):
+    """Depth of a flat floor seen by a level camera at cfg.camera_height_m (rows below the horizon)."""
+    v = np.arange(h, dtype=np.float32)[:, None] - K.cy
+    depth = np.where(v > 0, cfg.camera_height_m * K.fy / np.maximum(v, 1e-6), np.nan)  # NaN = sky
+    return np.repeat(depth, w, axis=1).astype(np.float32)
+
+
+def test_corridor_ignores_floor_but_naive_does_not():
+    cfg = CorridorConfig()
+    floor = ground_depth(cfg)
+    assert corridor_alerts(floor, K, cfg) == []
+    assert naive_alerts(floor, K, cfg)  # the floor in front of the feet triggers the naive baseline
+
+
+def test_corridor_alerts_obstacle_in_path_with_direction_and_distance():
+    cfg = CorridorConfig()
+    depth = ground_depth(cfg)
+    depth[20:60, 45:55] = 2.0  # pole straight ahead at 2 m
+    alerts = corridor_alerts(depth, K, cfg)
+    assert [a.direction for a in alerts] == ["center"] and alerts[0].distance_m == pytest.approx(2.0)
+    far = ground_depth(cfg)
+    far[20:60, 45:55] = 5.0  # beyond the warning range
+    assert corridor_alerts(far, K, cfg) == []
+    side = ground_depth(cfg)
+    side[20:60, 0:10] = 2.0  # about 1.8 m to the left: outside the 0.45 m half width
+    assert corridor_alerts(side, K, cfg) == []
+    assert any(a.direction == "left" for a in naive_alerts(side, K, cfg))
+
+
+def test_corridor_pitch_moves_the_floor():
+    floor = ground_depth(CorridorConfig())  # floor seen by a level camera
+    assert corridor_alerts(floor, K, CorridorConfig(pitch_deg=0.0)) == []
+    # Assuming the camera looks 10 degrees up lifts the floor 2 m ahead to about 0.37 m: a false alert.
+    assert [a.direction for a in corridor_alerts(floor, K, CorridorConfig(pitch_deg=-10.0))] == ["center"]
 
 
 # ---- Device and registry ----
