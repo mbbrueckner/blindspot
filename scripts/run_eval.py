@@ -15,6 +15,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from blindspot.alerts import CorridorConfig  # noqa: E402
 from blindspot.device import DEVICES  # noqa: E402
 from blindspot.eval.pipeline import PRESETS, make_config, run  # noqa: E402
 from blindspot.models import registry  # noqa: E402
@@ -44,6 +45,9 @@ def main(argv: list[str] | None = None) -> None:
     ap.add_argument("--stride", type=int, help="take every n-th iPhone frame")
     ap.add_argument("--max-frames", type=int, help="frames per iPhone recording")
     ap.add_argument("--annotations", type=Path, action="append", help="obstacle annotation JSON (repeatable)")
+    ap.add_argument("--camera-height", type=float, help="camera height above ground for the corridor [m]")
+    ap.add_argument("--pitch", type=float, help="camera pitch for the corridor [deg, + = down]")
+    ap.add_argument("--warn-range", type=float, help="alert range [m]")
     ap.add_argument("--warmup", type=int)
     ap.add_argument("--recompute", action="store_true", help="ignore cached predictions")
     ap.add_argument("--no-figures", action="store_true")
@@ -58,6 +62,18 @@ def main(argv: list[str] | None = None) -> None:
             print(f"group {group}: {', '.join(members)}")
         return
 
+    corridor = CorridorConfig()
+    corridor_overrides = {
+        k: v
+        for k, v in {
+            "camera_height_m": args.camera_height,
+            "pitch_deg": args.pitch,
+            "warn_range_m": args.warn_range,
+        }.items()
+        if v is not None
+    }
+    if corridor_overrides:
+        corridor = CorridorConfig(**{**corridor.to_dict(), **corridor_overrides})
     cfg = make_config(
         args.preset,
         run_name=args.run_name,
@@ -72,6 +88,7 @@ def main(argv: list[str] | None = None) -> None:
         iphone_stride=args.stride,
         iphone_max_frames=args.max_frames,
         annotations=args.annotations,
+        corridor=corridor,
         warmup=args.warmup,
         recompute=args.recompute or None,
         figures=False if args.no_figures else None,
