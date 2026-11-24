@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
 \usepackage{lmodern}
-\usepackage[margin=2.2cm]{geometry}
+\usepackage[margin=2cm]{geometry}
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{enumitem}
@@ -25,8 +25,11 @@
 \section*{Project status}
 
 \textbf{Data (WP 1.1--1.4).} The SANPO loader reads the real chest-camera sessions with depth in meters and
-intrinsics matched to the depth resolution. Session-level train, val and test splits and obstacle annotations
-for 40 SANPO test frames, derived from SANPO's panoptic masks, are in review. We recorded
+intrinsics matched to the depth resolution. Session-level splits (5 train, 1 val, 4 test sessions) keep each session on one side. For 40 SANPO
+test frames the obstacle boxes come from SANPO's panoptic masks: 483 obstacles, 195 in the walking path
+(middle image third). Walls, buildings, barriers and traffic lights count as obstacles, bushes do not; the
+group still has to confirm this. The chessboard calibration (WP 1.1) was checked on synthetic boards; our
+recordings use the ARKit intrinsics. We recorded
 14 sequences of our own with the iPhone~12~Pro and the Stray Scanner app (6 indoor, 7 on a terrace, 1 door
 transition; day and night), with LiDAR depth as ground truth and ARKit intrinsics per frame. Recording names encode
 environment, scene, lighting and obstacle types, so every metric can be grouped by them. The camera height on the chest is measured at 1.30\,m. Not done yet: annotations of our own
@@ -35,8 +38,8 @@ recordings, outdoor recordings on real sidewalks and streets, and separate train
 \textbf{Evaluation framework (WP 5.1).} One command runs any set of models over SANPO and our recordings and
 writes a JSON and Markdown report plus performance figures for slides and documents. It measures AbsRel, RMSE and $\delta_1$ per
 depth range (0--2, 2--5, 5--10\,m), error over distance, parameters, latency and peak memory, and the alert
-metrics (recall, false alarm rate, direction, distance error) as soon as annotations exist. The framework is covered by 62 tests that run in CI
-without GPU, network or model weights.
+metrics (recall, false alarm rate, direction, distance error) as soon as annotations exist. A constant 4\,m variant that never alerts is the lower bound ($\delta_1 = 0.37$ on the 40 SANPO frames).
+The framework is covered by 62 tests that run in CI without GPU, network or model weights.
 
 \textbf{Model comparison (WP 2.1).} We integrated 14 pretrained models behind one interface that receives the
 image and the camera intrinsics, but never the ground truth. They fall into three groups: metric models
@@ -52,7 +55,7 @@ is the most accurate model (0.86 raw, 0.93 scaled), but with 334\,M parameters t
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.92\linewidth]{figures/m1_accuracy_vs_latency.pdf}
+\includegraphics[width=0.72\linewidth]{figures/m1_accuracy_vs_latency.pdf}
 \caption{Accuracy with one scale factor per frame over GPU latency on our recordings. Dashed: best
 trade-off; point size: number of parameters.}
 \label{fig:speed}
@@ -78,8 +81,9 @@ annotated.
   focal length profit most from it. Relative models also need a shift, not only a scale, so the ground fit has
   to estimate both.
 \item \textbf{The near range is the weak spot.} All models are worst below 1\,m, exactly where alerts matter.
-  SANPO cannot measure this: its stereo depth starts at about 2\,m, and its test frames contain almost no
-  obstacles in the walking path within 3\,m. Our own LiDAR recordings are indispensable, but the LiDAR is
+  SANPO cannot measure this: its stereo depth starts at about 2\,m, and only 6 of the 40 annotated test frames
+  have an obstacle in the walking path within 3\,m (10 within 5\,m), all of them walls or fences, none a person
+  or pole. Recall is therefore only meaningful on our own recordings. Our own LiDAR recordings are indispensable, but the LiDAR is
   only reliable up to about 5\,m (99.9\,\% of the valid pixels lie below 5.1\,m).
 \item \textbf{Lighting matters more than indoor versus outdoor.} At night the scaled $\delta_1$ of Metric3D~S
   drops from 0.93 to 0.83. Routing to separate indoor and outdoor models would not help: the indoor variant of
