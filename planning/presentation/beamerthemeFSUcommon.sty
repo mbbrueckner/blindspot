@@ -1,0 +1,57 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeFSUcommon}[2018/12/03 v0.1 FSU theme]
+
+\RequirePackage{tikz}
+
+\tikzset{regenbogenband/.style={path picture={
+  \pgfextractx\beamerfsu@logobbwidth{\pgfpointdiff{\pgfpointanchor{path picture bounding box}{south west}}
+    {\pgfpointanchor{path picture bounding box}{north east}}}
+  \pgfextracty\beamerfsu@logobbheight{\pgfpointdiff{\pgfpointanchor{path picture bounding box}{south west}}
+    {\pgfpointanchor{path picture bounding box}{north east}}}
+  \pgfmathsetlengthmacro\partwidth{\beamerfsu@logobbwidth/20}
+  \fill[white] (path picture bounding box);
+  \foreach \i/\v in {
+      0/cdtheologie,
+      2/cdphilosophie,
+      4/cdrechtswiss,
+      6/cdmedizin,
+      8/cdphysik,
+      10/cdwiwiss,
+      12/cdchemie,
+      14/cdbiowiss,
+      16/cdmathematik,
+      18/cdsozialwiss}{
+    \fill[fill=\v] ([xshift={\i*\partwidth}]path picture bounding box.south west)
+         rectangle ([xshift={(\i+1)*\partwidth}]path picture bounding box.north west);
+    \fill[fill=\v!55!white] ([xshift={(\i+1)*\partwidth}]path picture bounding box.south west)
+                  rectangle ([xshift={(\i+2)*\partwidth}]path picture bounding box.north west);
+  }
+}}}
+
+% CMYK colors -- handle with care (appear lighter than RGB)
+%\definecolor{cdhausfarbe}{cmyk}{0.392157,0.274510,0.039216,0.196078}
+%\definecolor{cdauszeichnung}{cmyk}{0.078431,0.098039,0.235294,0.098039}
+%\definecolor{cdtheologie}{cmyk}{0.313725,0.333333,0.000000,0.000000}
+%\definecolor{cdrechtswiss}{cmyk}{0.058824,0.392157,0.098039,0.058824}
+%\definecolor{cdwiwiss}{cmyk}{0.019608,0.156863,0.392157,0.039216}
+%\definecolor{cdphilosophie}{cmyk}{0.196078,0.392157,0.000000,0.039216}
+%\definecolor{cdsozialwiss}{cmyk}{0.274510,0.078431,0.000000,0.078431}
+%\definecolor{cdmathematik}{cmyk}{0.392157,0.098039,0.156863,0.039216}
+%\definecolor{cdphysik}{cmyk}{0.039216,0.274510,0.392157,0.000000}
+%\definecolor{cdchemie}{cmyk}{0.274510,0.039216,0.392157,0.019608}
+%\definecolor{cdbiowiss}{cmyk}{0.352941,0.117647,0.392157,0.039216}
+%\definecolor{cdmedizin}{cmyk}{0.000000,0.372549,0.313725,0.058824}
+
+% RGB colors
+\definecolor{cdhausfarbe}{rgb}{0.000000,0.184314,0.364706}
+\definecolor{cdauszeichnung}{rgb}{0.682353,0.603922,0.388235}
+\definecolor{cdtheologie}{rgb}{0.341176,0.239216,0.564706}
+\definecolor{cdrechtswiss}{rgb}{0.725490,0.031373,0.372549}
+\definecolor{cdwiwiss}{rgb}{0.862745,0.596078,0.000000}
+\definecolor{cdphilosophie}{rgb}{0.541176,0.094118,0.470588}
+\definecolor{cdsozialwiss}{rgb}{0.215686,0.552941,0.737255}
+\definecolor{cdmathematik}{rgb}{0.000000,0.478431,0.545098}
+\definecolor{cdphysik}{rgb}{0.862745,0.396078,0.074510}
+\definecolor{cdchemie}{rgb}{0.337255,0.619608,0.192157}
+\definecolor{cdbiowiss}{rgb}{0.000000,0.466667,0.211765}
+\definecolor{cdmedizin}{rgb}{0.796078,0.133333,0.160784}

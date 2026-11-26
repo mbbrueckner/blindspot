@@ -1,0 +1,19 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeFSU}[2018/12/03 v0.1 FSU theme]
+
+\RequirePackage[compatibility=false,labelfont=footnotesize,font=footnotesize]{caption}
+\RequirePackage[singlelinecheck=off,justification=centering,labelfont=footnotesize,font=footnotesize]{subcaption}
+
+\DeclareOptionBeamer{withnavigation}{\PassOptionsToPackage{withnavigation}{beamerouterthemeFSU}}
+\DeclareOptionBeamer{numberedsections}{\PassOptionsToPackage{numberedsections}{beamerinnerthemeFSU}}
+\DeclareOptionBeamer{swaptitles}{\PassOptionsToPackage{swaptitles}{beamerinnerthemeFSU}}
+\DeclareOptionBeamer{condensed}{\PassOptionsToPackage{condensed}{beamerfontthemeFSU}}
+\ProcessOptionsBeamer
+
+\mode<presentation>{
+  \usecolortheme{FSU}
+  \usefonttheme{FSU}
+  \useinnertheme{FSU}
+  \useoutertheme{FSU}
+}
+\mode<all>
