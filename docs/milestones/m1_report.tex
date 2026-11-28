@@ -26,8 +26,8 @@
 
 \textbf{Data (WP 1.1--1.4).} The SANPO loader reads the real chest-camera sessions with depth in meters and
 intrinsics matched to the depth resolution. Session-level splits (5 train, 1 val, 4 test sessions) keep each session on one side. For 40 SANPO
-test frames the obstacle boxes come from SANPO's panoptic masks: 483 obstacles, 195 in the walking path
-(middle image third). Walls, buildings, barriers and traffic lights count as obstacles, bushes do not; the
+test frames the obstacle boxes come from SANPO's panoptic masks: 483 obstacles, 36 in the walking path
+(inside the 3D corridor of WP 3.1, computed from the reference depth). Walls, buildings, barriers and traffic lights count as obstacles, bushes do not; the
 group still has to confirm this. The chessboard calibration (WP 1.1) was checked on synthetic boards; our
 recordings use the ARKit intrinsics. We recorded
 14 sequences of our own with the iPhone~12~Pro and the Stray Scanner app (6 indoor, 7 on a terrace, 1 door
@@ -38,7 +38,7 @@ recordings, outdoor recordings on real sidewalks and streets, and separate train
 \textbf{Evaluation framework (WP 5.1).} One command runs any set of models over SANPO and our recordings and
 writes a JSON and Markdown report plus performance figures for slides and documents. It measures AbsRel, RMSE and $\delta_1$ per
 depth range (0--2, 2--5, 5--10\,m), error over distance, parameters, latency and peak memory, and the alert
-metrics (recall, false alarm rate, direction, distance error) as soon as annotations exist. A constant 4\,m variant that never alerts is the lower bound ($\delta_1 = 0.37$ on the 40 SANPO frames).
+metrics (recall, false alarm rate, direction, distance error) as soon as annotations exist. A constant 6\,m variant that never alerts within the 5\,m warning range is the lower bound (4\,m before; numbers pending the next full run).
 The framework is covered by 62 tests that run in CI without GPU, network or model weights.
 
 \textbf{Model comparison (WP 2.1).} We integrated 14 pretrained models behind one interface that receives the
@@ -68,7 +68,7 @@ iPhone; Depth Anything~3 Metric Large serves as a reference and as a possible te
 
 \textbf{Alert logic (WP 3.1, own branch).} The offline pipeline goes from image over depth to alerts. A walking corridor in
 3D (0.9\,m wide, ground and points above head height removed using camera height and pitch) raises an alert
-for the left, center or right third of the image when enough points lie closer than 3\,m; a naive baseline
+for the left, center or right third of the image when enough points lie closer than 5\,m; a naive baseline
 without corridor serves as comparison. How good the alerts are can only be measured once our recordings are
 annotated.
 
@@ -82,7 +82,7 @@ annotated.
   to estimate both.
 \item \textbf{The near range is the weak spot.} All models are worst below 1\,m, exactly where alerts matter.
   SANPO cannot measure this: its stereo depth starts at about 2\,m, and only 6 of the 40 annotated test frames
-  have an obstacle in the walking path within 3\,m (10 within 5\,m), all of them walls or fences, none a person
+  have an obstacle in the walking path within 3\,m (10 within 5\,m), all of them walls, buildings, barriers or handrails, none a person
   or pole. Recall is therefore only meaningful on our own recordings. Our own LiDAR recordings are indispensable, but the LiDAR is
   only reliable up to about 5\,m (99.9\,\% of the valid pixels lie below 5.1\,m).
 \item \textbf{Lighting matters more than indoor versus outdoor.} At night the scaled $\delta_1$ of Metric3D~S

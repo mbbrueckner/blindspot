@@ -16,13 +16,14 @@ blindspot/
     recordings.py      recording names, validation and manifest (WP 1.3)
     datasets.py        loads SANPO and iPhone data with frame subsampling and tags
     calibration.py     camera intrinsics from chessboard photos, intrinsics scaling (WP 1.1)
-    annotations.py     obstacle annotation JSON (WP 1.4)
+    annotations.py     obstacle annotation JSON, attached to samples by frame_id (WP 1.4)
+    masks.py           obstacle boxes from SANPO panoptic masks (WP 1.4)
     splits.py          train/val/test splits on session level (WP 1.4)
   models/            depth models (WP 2.1)
     base.py            common interface DepthModel.predict(rgb, intrinsics) -> depth
     registry.py        short names, groups (tier1, mobile, camera, ...), lazy construction
     midas.py, hf.py (Depth Anything V2, ZoeDepth, Depth Pro), metric3d.py, yolo.py, zipdepth.py,
-    moge.py, unidepth.py, da3.py
+    moge.py, unidepth.py, da3.py, constant.py (constant 6 m lower bound)
   alerts/            alert logic (WP 3.1)
     corridor.py        walking corridor in 3D and alerts per image third
     naive.py           naive baseline without corridor
@@ -41,6 +42,8 @@ scripts/             thin command line entry points
   predict.py           fills the cache from a separate model environment
   check_recordings.py  checks names, manifest and frame alignment of the iPhone recordings
   setup_model_envs.sh  creates the separate environments for MoGe, UniDepth and DA3
+  make_splits.py       session-level SANPO splits into planning/splits/
+  make_annotations.py  obstacle annotation JSON from SANPO masks into planning/annotations/
   download_sanpo.py, calibrate.py
 tests/               pytest with synthetic data and dummy models (no torch, no network, no weights)
 ```
@@ -126,7 +129,13 @@ The videos decode with one frame fewer than there are depth maps; the missing fr
 # Smoke run: 3 SANPO frames + the first own recording (every 30th frame, at most 5), Tier-1 models
 uv run python scripts/run_eval.py --preset smoke
 
-# Full run: all downloaded SANPO test frames + all own test recordings (every 10th frame), all models
+# SANPO test split (planning/splits/sanpo_real_test.txt): 4 sessions with masks, 10 frames each (once)
+uv run python scripts/download_sanpo.py --kind real --split test --masks --sessions 4 --stride 2 --max-frames 10 --yes
+# Obstacle annotation from the masks (already versioned in planning/annotations/, only needed after changes)
+uv run python scripts/make_annotations.py --root data/sanpo/real --split planning/splits/sanpo_real_test.txt \
+    --out planning/annotations/sanpo_real_test.json
+
+# Full run: the SANPO test split with its annotation + all own test recordings (every 10th frame), all models
 bash scripts/setup_model_envs.sh                                         # once
 envs/moge/bin/python scripts/predict.py --models moge2_s --preset full
 envs/unidepth/bin/python scripts/predict.py --models unidepth2_s --preset full
@@ -135,9 +144,7 @@ uv run python scripts/run_eval.py --preset full --run-name m1_full
 
 # Variants
 uv run python scripts/run_eval.py --preset full --models mobile,m3d_s --datasets iphone --device cpu
-uv run python scripts/run_eval.py --preset full --datasets sanpo --sanpo-split planning/splits/sanpo_real_test.txt \
-    --annotations planning/annotations/sanpo_real_test.json
-uv run python scripts/run_eval.py --preset smoke --models baseline        # constant 4 m lower bound
+uv run python scripts/run_eval.py --preset smoke --models baseline        # constant 6 m lower bound
 uv run python scripts/run_eval.py --list-models
 ```
 
