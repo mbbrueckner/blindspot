@@ -43,7 +43,7 @@ class CorridorConfig:
     """
 
     half_width_m: float = 0.45
-    warn_range_m: float = 5.0
+    warn_range_m: float = 3.0
     camera_height_m: float = 1.30
     pitch_deg: float = 0.0
     min_height_m: float = 0.15

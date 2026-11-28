@@ -14,7 +14,7 @@ class ConstantDepth(DepthModel):
         depth_m: Predicted depth in meters.
     """
 
-    def __init__(self, info: ModelInfo, depth_m: float = 6.0) -> None:
+    def __init__(self, info: ModelInfo, depth_m: float = 4.0) -> None:
         """Stores the description and the constant."""
         super().__init__(info)
         self.depth_m = depth_m

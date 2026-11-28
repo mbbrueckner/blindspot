@@ -225,16 +225,16 @@ _register(
 _register(
     ModelInfo(
         "constant",
-        "Constant 6 m",
+        "Constant 4 m",
         "Baseline",
         "metric",
         False,
         "none",
         install="none",
-        notes="lower bound for every metric: the same depth everywhere, so it never alerts within 5 m",
+        notes="lower bound for every metric: the same depth everywhere, so it never alerts within 3 m",
     ),
     "blindspot.models.constant:ConstantDepth",
-    depth_m=6.0,
+    depth_m=4.0,
 )
 
 TIER1 = ("midas_s", "da2_s", "da2m_in_s", "da2m_out_s", "m3d_s", "yolo26n", "zipdepth")

@@ -6,6 +6,5 @@ Modules:
     sanpo: SANPO loader (WP 1.2).
     calibration: Camera intrinsics from chessboard photos, intrinsics scaling (WP 1.1).
     annotations: Obstacle annotation JSON (WP 1.4).
-    masks: Obstacle boxes derived from SANPO panoptic masks (WP 1.4).
     splits: Train, val and test splits on session level (WP 1.4).
 """

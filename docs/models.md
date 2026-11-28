@@ -21,7 +21,7 @@ integrating them. As of 23.11.2026. Short names and groups: `uv run python scrip
 | `da3_s` | Depth Anything 3 Small | relative (depth) | no | 34.3 M | `envs/da3` | HF `depth-anything/DA3-SMALL` |
 | `zoedepth` | ZoeDepth NYU+KITTI | metric | no | 345 M | main | HF `Intel/zoedepth-nyu-kitti` |
 | `m3d_l` | Metric3D v2 ViT-L | metric | yes | 412 M | main | torch hub `yvanyin/metric3d@eb5b6fa` |
-| `constant` | Constant 6 m (lower bound) | metric | no | – | main | none |
+| `constant` | Constant 4 m (lower bound) | metric | no | – | main | none |
 
 Groups: `tier1` (the first seven), `tier2` (the next seven), `baseline` (`constant`, the lower bound every
 model has to beat), `mobile` (below 30 M parameters), `camera` (use our focal length), `reference` (large

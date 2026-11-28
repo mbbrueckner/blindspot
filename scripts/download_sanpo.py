@@ -14,7 +14,6 @@ import argparse
 import json
 import random
 import sys
-import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -53,9 +52,7 @@ def list_objects(prefix: str) -> list[tuple[str, int]]:
             return out
 
 
-def plan_session(
-    kind: str, sid: str, stride: int, max_frames: int, masks: bool = False
-) -> list[tuple[str, int]]:
+def plan_session(kind: str, sid: str, stride: int, max_frames: int) -> list[tuple[str, int]]:
     """Selects the files of a session (empty if it has no chest camera).
 
     Args:
@@ -63,8 +60,6 @@ def plan_session(
         sid: Session ID.
         stride: Take only every n-th frame.
         max_frames: Maximum number of frames per session.
-        masks: Only use sessions with segmentation masks, only frames with human-made masks, and
-            plan the masks too. ``stride`` then counts among those frames.
 
     Returns:
         List of (path relative to ``v0/``, size in bytes; 0 if unknown).
@@ -74,24 +69,9 @@ def plan_session(
     frames = sorted(o for o in list_objects(f"{left}/video_frames/") if o[0].endswith(".png"))
     if not frames:
         return []
-    extra = []
-    if masks:
-        type_file = f"{left}/frame_segmentation_annotation_type.json"
-        try:
-            kinds = json.loads(_get(f"{SANPO_URL}/{type_file}"))
-        except urllib.error.HTTPError as e:
-            if e.code == 404:
-                return []  # session has no segmentation masks
-            raise
-        human = {int(k) for k, v in kinds.items() if v == "HUMAN_ANNOTATED"}
-        frames = [f for f in frames if int(Path(f[0]).stem) in human]
-        extra = [(type_file, 0)]
     chosen = frames[::stride][:max_frames]
-    if not chosen:
-        return []
     depth = [(f"{left}/depth_maps/{Path(n).stem}.float16.gz", 0) for n, _ in chosen]
-    mask_files = [(f"{left}/segmentation_masks/{Path(n).stem}.png", 0) for n, _ in chosen] if masks else []
-    return [(f"{base}/description.json", 0)] + extra + chosen + depth + mask_files
+    return [(f"{base}/description.json", 0)] + chosen + depth
 
 
 def main() -> None:
@@ -102,7 +82,6 @@ def main() -> None:
     ap.add_argument("--sessions", type=int, default=5, help="number of sessions")
     ap.add_argument("--stride", type=int, default=30, help="take only every n-th frame")
     ap.add_argument("--max-frames", type=int, default=20, help="frames per session")
-    ap.add_argument("--masks", action="store_true", help="only sessions with masks, human-made frames only")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--out", type=Path, default=Path("data/sanpo"))
     ap.add_argument("--yes", action="store_true", help="actually download")
@@ -113,7 +92,7 @@ def main() -> None:
 
     selected, plans = [], {}
     for sid in ids:
-        files = plan_session(args.kind, sid, args.stride, args.max_frames, args.masks)
+        files = plan_session(args.kind, sid, args.stride, args.max_frames)
         if files:
             selected.append(sid)
             plans[sid] = files

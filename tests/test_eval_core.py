@@ -113,7 +113,7 @@ def test_corridor_alerts_obstacle_in_path_with_direction_and_distance():
     alerts = corridor_alerts(depth, K, cfg)
     assert [a.direction for a in alerts] == ["center"] and alerts[0].distance_m == pytest.approx(2.0)
     far = ground_depth(cfg)
-    far[20:60, 45:55] = 6.0  # beyond the warning range
+    far[20:60, 45:55] = 5.0  # beyond the warning range
     assert corridor_alerts(far, K, cfg) == []
     side = ground_depth(cfg)
     side[20:60, 0:10] = 2.0  # about 1.8 m to the left: outside the 0.45 m half width

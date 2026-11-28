@@ -31,7 +31,7 @@ Variant = Callable[[np.ndarray, Intrinsics], tuple[np.ndarray, Sequence[Alert]]]
 def evaluate_variant(
     variant: Variant,
     samples: Iterable[Sample],
-    warn_range_m: float = 5.0,
+    warn_range_m: float = 3.0,
     max_depth: float = 10.0,
 ) -> dict:
     """Runs a variant over all images and computes all metrics.

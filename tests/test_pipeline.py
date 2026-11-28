@@ -1,7 +1,6 @@
 """Runner, scoring, report and the whole pipeline with dummy models (no torch, no weights)."""
 
 import json
-import pathlib
 
 import numpy as np
 import pytest
@@ -197,7 +196,7 @@ def test_pipeline_constant_baseline_with_sanpo_split_and_annotations(tmp_path):
     split = tmp_path / "test.txt"
     split.write_text("s2\n")  # s1 is downloaded but not in the split
     ann = tmp_path / "ann.json"
-    wall = {"box": [1, 1, 7, 5], "label": "wall", "in_path": True}  # 2.5 m, inside the 5 m range
+    wall = {"box": [1, 1, 7, 5], "label": "wall", "in_path": True}  # 2.5 m, inside the 3 m range
     ann.write_text(json.dumps({"s2/camera_chest/000000": [wall]}))
     kwargs = dict(
         run_name="c",
@@ -215,7 +214,7 @@ def test_pipeline_constant_baseline_with_sanpo_split_and_annotations(tmp_path):
     assert data["data"]["sanpo"]["sessions"] == ["s2"] and data["data"]["annotated_frames"] == 1
     row = next(r for r in data["summary"] if r["model"] == "constant" and r["range"] == "2-5")
     assert row["alignment"] == "raw"  # frames are 2.5 m and 3.5 m deep
-    assert row["abs_rel"] == pytest.approx((3.5 / 2.5 + 2.5 / 3.5) / 2)
+    assert row["abs_rel"] == pytest.approx((1.5 / 2.5 + 0.5 / 3.5) / 2)
     warn = [r for r in data["warnings"] if r["model"] == "constant"]
     assert warn and all(r["n_positive"] == 1 and r["recall"] == 0.0 for r in warn)  # never alerts
 
@@ -223,16 +222,3 @@ def test_pipeline_constant_baseline_with_sanpo_split_and_annotations(tmp_path):
     ann.write_text(json.dumps({"s2/camera_chest/000000": [wall]}))
     with pytest.raises(ValueError, match="outside"):
         run(make_config("smoke", **{**kwargs, "run_name": "bad"}), log=lambda m: None)
-
-
-def test_full_preset_uses_the_versioned_sanpo_split_and_annotation():
-    from blindspot.data.annotations import load_annotations
-    from blindspot.data.sanpo import read_session_ids
-    from blindspot.eval.pipeline import SANPO_TEST_ANNOTATIONS, SANPO_TEST_SPLIT
-
-    cfg = make_config("full", run_name="x")
-    assert cfg.sanpo_split == SANPO_TEST_SPLIT and cfg.annotations == [SANPO_TEST_ANNOTATIONS]
-    root = pathlib.Path(__file__).resolve().parent.parent
-    sessions = set(read_session_ids(root / SANPO_TEST_SPLIT))
-    annotated = load_annotations(str(root / SANPO_TEST_ANNOTATIONS))
-    assert annotated and {fid.split("/")[0] for fid in annotated} <= sessions

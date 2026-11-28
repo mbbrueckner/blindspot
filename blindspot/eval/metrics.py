@@ -100,7 +100,7 @@ def _frame_truth(sample: Sample, warn_range_m: float) -> Optional[list[tuple[flo
 def warning_metrics(
     samples: Sequence[Sample],
     warnings: Sequence[Sequence[Alert]],
-    warn_range_m: float = 5.0,
+    warn_range_m: float = 3.0,
 ) -> dict:
     """Scores alerts against the obstacle annotation (image level, see module description).
 
@@ -167,7 +167,7 @@ def latency_stats(seconds: Sequence[float]) -> dict:
     }
 
 
-# Depth ranges in meters, (lower, upper]; alerts happen within about 5 m, so the near range is separate.
+# Depth ranges in meters, (lower, upper]; alerts happen within about 3 m, so the near range is separate.
 DEPTH_RANGES = {"0-2": (0.0, 2.0), "2-5": (2.0, 5.0), "5-10": (5.0, 10.0), "all": (0.0, 10.0)}
 
 

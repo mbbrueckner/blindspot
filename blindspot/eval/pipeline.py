@@ -86,9 +86,6 @@ class RunConfig:
     cache_root: Path = Path("results/cache")
 
 
-SANPO_TEST_SPLIT = Path("planning/splits/sanpo_real_test.txt")
-SANPO_TEST_ANNOTATIONS = Path("planning/annotations/sanpo_real_test.json")
-
 PRESETS: dict[str, dict] = {
     # 3 SANPO frames and the first own recording (every 30th frame, at most 5): checks the whole chain.
     "smoke": {
@@ -99,14 +96,8 @@ PRESETS: dict[str, dict] = {
         "iphone_max_frames": 5,
         "warmup": 2,
     },
-    # The versioned SANPO test split with its mask-derived obstacle annotation (WP 1.4) and all own test
-    # recordings (every 10th frame), all models.
-    "full": {
-        "models": "all",
-        "iphone_stride": 10,
-        "sanpo_split": SANPO_TEST_SPLIT,
-        "annotations": [SANPO_TEST_ANNOTATIONS],
-    },
+    # All downloaded SANPO test frames and all own test recordings (every 10th frame), all models.
+    "full": {"models": "all", "iphone_stride": 10},
 }
 
 
